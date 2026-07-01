@@ -1,4 +1,4 @@
 [submodule "engine"]
 	path = engine
-	url = https://github.com/santifer/career-ops.git
+	url = https://github.com/KM-it-ops/career-ops.git
 	branch = main
