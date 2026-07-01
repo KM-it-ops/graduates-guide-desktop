@@ -1,7 +1,7 @@
 export function EthicalBanner() {
   return (
     <div className="ethical-banner" role="note">
-      Career-ops does the work. <strong>You read the script. You click Send.</strong>
+      Copy in the app. <strong>You send in your mail client or job portal.</strong> No auto-apply.
     </div>
   );
 }

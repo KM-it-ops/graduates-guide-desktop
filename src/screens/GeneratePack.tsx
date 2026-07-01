@@ -26,8 +26,7 @@ export function GeneratePackScreen() {
     <>
       <h1 className="page-title">{info.title}</h1>
       <p style={{ color: 'var(--text-muted)' }}>
-        Generates verbatim script packs via career-ops engine + NIS charter. Output must pass
-        graduates-guide-verify.
+        <strong>Phase 3 preview.</strong> In-app pack generation is not wired yet — use the bundled engine / CLI. Output must pass graduates-guide-verify before you send anything.
       </p>
       <section className="card">
         <p>Module: <code>{info.module}</code></p>
