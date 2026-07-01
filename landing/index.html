@@ -13,41 +13,55 @@
   <link rel="icon" href="../app-icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --navy: #0f172a;
-      --navy-mid: #1e293b;
+      --navy: #0b1220;
+      --navy-mid: #151f33;
+      --navy-soft: #1e293b;
       --slate: #334155;
+      --ink: #0f172a;
       --muted: #64748b;
-      --paper: #f8fafc;
+      --paper: #eef2f7;
       --white: #ffffff;
-      --primary: #1d4ed8;
-      --accent: #0f766e;
+      --primary: #2563eb;
+      --primary-deep: #1d4ed8;
+      --accent: #0d9488;
       --accent-bright: #5eead4;
-      --border: #e2e8f0;
+      --accent-glow: rgba(94, 234, 212, 0.14);
+      --border: #d8e0ea;
       --font: 'IBM Plex Sans', system-ui, sans-serif;
       --mono: 'IBM Plex Mono', Consolas, monospace;
+      --max: 1120px;
+      --radius: 12px;
     }
+
     * { box-sizing: border-box; margin: 0; }
+
     body {
       font-family: var(--font);
       background: var(--paper);
-      color: var(--navy);
+      color: var(--ink);
       line-height: 1.6;
     }
-    a { color: var(--primary); text-decoration: none; }
+
+    a { color: var(--primary-deep); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 1.5rem;
-      background: var(--navy);
+      padding: 0.85rem 1.5rem;
+      background: rgba(11, 18, 32, 0.92);
+      backdrop-filter: blur(10px);
       color: var(--white);
-      border-bottom: 1px solid #334155;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
     }
+
     .brand {
       display: flex;
       align-items: center;
@@ -55,167 +69,347 @@
       font-weight: 700;
       font-size: 1rem;
     }
-    .brand img { width: 36px; height: 36px; border-radius: 8px; }
+
+    .brand img { width: 38px; height: 38px; border-radius: 10px; }
+
     .brand small {
       display: block;
-      font-size: 0.7rem;
-      font-weight: 500;
+      font-size: 0.68rem;
+      font-weight: 600;
       color: var(--accent-bright);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
+
     .topbar a.gh {
       color: var(--white);
       font-size: 0.875rem;
       font-weight: 600;
       padding: 0.5rem 1rem;
-      border: 1px solid #475569;
+      border: 1px solid rgba(148, 163, 184, 0.35);
       border-radius: 8px;
+      transition: background 0.2s ease;
     }
+
     .topbar a.gh:hover { background: var(--navy-mid); text-decoration: none; }
+
+    .hero-wrap {
+      background:
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(37, 99, 235, 0.35), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 90% 10%, rgba(13, 148, 136, 0.28), transparent 50%),
+        linear-gradient(165deg, var(--navy) 0%, #0f1a2e 48%, #12243d 100%);
+      color: var(--white);
+      padding: 3.5rem 1.5rem 4rem;
+      overflow: hidden;
+    }
 
     .hero {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
-      gap: 2.5rem;
+      gap: 2.75rem;
       align-items: center;
-      max-width: 1080px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 3.5rem 1.5rem 2.5rem;
     }
-    .hero-copy h1 {
-      font-size: clamp(2rem, 3.6vw, 3rem);
-      line-height: 1.12;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-      text-wrap: balance;
-    }
-    .hero-copy .lede {
-      font-size: 1.125rem;
-      color: var(--slate);
-      max-width: 34rem;
-      margin-bottom: 1.25rem;
-      text-wrap: pretty;
-    }
+
     .hero-copy .tagline {
       font-family: var(--mono);
-      font-size: 0.85rem;
-      color: var(--accent);
-      background: #ecfdf5;
-      border: 1px solid #99f6e4;
-      display: inline-block;
-      padding: 0.35rem 0.75rem;
-      border-radius: 6px;
-      margin-bottom: 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-bright);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.25rem;
     }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+    .hero-copy h1 {
+      font-size: clamp(2.35rem, 4.2vw, 3.75rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin-bottom: 1.1rem;
+      text-wrap: balance;
+      max-width: 14ch;
+    }
+
+    .hero-copy h1 em {
+      font-style: normal;
+      color: var(--accent-bright);
+    }
+
+    .hero-copy .lede {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 36rem;
+      margin-bottom: 1.75rem;
+      text-wrap: pretty;
+    }
+
+    .cta-row { display: flex; flex-wrap: wrap; gap: 0.85rem; align-items: center; }
+
     .cta {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       background: var(--primary);
       color: var(--white);
-      padding: 0.8rem 1.35rem;
-      border-radius: 8px;
+      padding: 0.9rem 1.5rem;
+      border-radius: 10px;
       font-weight: 700;
+      font-size: 0.98rem;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .cta:hover {
+      background: var(--primary-deep);
+      transform: translateY(-1px);
       text-decoration: none;
     }
-    .cta:hover { background: #1e40af; text-decoration: none; }
+
     .cta-secondary {
-      color: var(--slate);
+      color: #e2e8f0;
       font-weight: 600;
       font-size: 0.95rem;
+      padding: 0.5rem 0.25rem;
     }
-    .hero-visual img {
+
+    .hero-frame {
+      position: relative;
+      padding: 0.65rem;
+      border-radius: 16px;
+      background: linear-gradient(145deg, rgba(94, 234, 212, 0.22), rgba(37, 99, 235, 0.18));
+    }
+
+    .hero-frame::before {
+      content: '';
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, var(--accent-glow), transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-frame img {
+      position: relative;
       display: block;
       width: 100%;
       height: auto;
       border-radius: 12px;
-      border: 1px solid var(--border);
-    }
-    .hero-caption {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 0.6rem;
-      line-height: 1.45;
+      border: 1px solid rgba(148, 163, 184, 0.25);
     }
 
-    .strip {
-      background: var(--navy);
-      color: #cbd5e1;
-      padding: 1rem 1.5rem;
-      text-align: center;
-      font-size: 0.95rem;
+    .hero-caption {
+      font-size: 0.76rem;
+      color: #94a3b8;
+      margin-top: 0.75rem;
+      font-family: var(--mono);
     }
-    .strip strong { color: var(--accent-bright); }
+
+    .manifest {
+      max-width: var(--max);
+      margin: -1.75rem auto 0;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .manifest-inner {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.35rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    .manifest p {
+      font-size: 0.98rem;
+      color: var(--slate);
+      max-width: 42rem;
+    }
+
+    .manifest strong { color: var(--ink); }
+
+    .manifest-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      background: #ecfdf5;
+      color: #0f766e;
+      border: 1px solid #99f6e4;
+    }
+
+    .pill.neutral {
+      background: #f1f5f9;
+      color: var(--slate);
+      border-color: var(--border);
+    }
 
     .section {
-      max-width: 1080px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 3rem 1.5rem;
+      padding: 4rem 1.5rem;
     }
-    .section h2 {
-      font-size: 1.4rem;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
+
+    .section-head {
+      margin-bottom: 2rem;
+      max-width: 36rem;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
       text-wrap: balance;
     }
 
-    .pillars {
+    .section-head p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .bento {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-rows: auto auto;
       gap: 1rem;
     }
-    .pillar {
+
+    .bento-card {
+      border-radius: var(--radius);
+      padding: 1.5rem 1.6rem;
+      min-height: 160px;
+    }
+
+    .bento-card.dark {
+      background: var(--navy-soft);
+      color: var(--white);
+      grid-row: span 2;
+    }
+
+    .bento-card.dark h3 { font-size: 1.35rem; margin-bottom: 0.6rem; }
+    .bento-card.dark p { color: #94a3b8; font-size: 0.95rem; max-width: 28ch; }
+
+    .bento-card.light {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.35rem;
     }
-    .pillar h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-    .pillar p { font-size: 0.92rem; color: var(--muted); }
 
-    .flow-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .flow-item {
-      background: var(--navy);
+    .bento-card.light h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .bento-card.light p { font-size: 0.92rem; color: var(--muted); }
+
+    .bento-card.accent {
+      background: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
       color: var(--white);
-      border-radius: 12px;
-      padding: 1.2rem 1.25rem;
     }
-    .flow-item h3 { font-size: 0.98rem; margin-bottom: 0.35rem; }
-    .flow-item p { font-size: 0.88rem; color: #94a3b8; }
+
+    .bento-card.accent h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    .bento-card.accent p { font-size: 0.92rem; color: #ccfbf1; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--navy);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .flow-step {
+      padding: 1.35rem 1.25rem;
+      border-right: 1px solid rgba(148, 163, 184, 0.15);
+      color: var(--white);
+    }
+
+    .flow-step:last-child { border-right: none; }
+
+    .flow-step h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      color: var(--accent-bright);
+    }
+
+    .flow-step p { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
+
+    .scope-panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
 
     .scope-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 0.92rem;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
     }
-    .scope-table th, .scope-table td {
-      padding: 0.75rem 1rem;
+
+    .scope-table th,
+    .scope-table td {
+      padding: 0.85rem 1.15rem;
       text-align: left;
       border-bottom: 1px solid var(--border);
     }
-    .scope-table th { background: #f1f5f9; font-weight: 600; }
+
+    .scope-table th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+
     .scope-table tr:last-child td { border-bottom: none; }
-    .badge-shipped { color: #047857; font-weight: 600; }
-    .badge-stub { color: #b45309; font-weight: 600; }
+    .scope-table tr:nth-child(even) td { background: #f8fafc; }
+
+    .badge-shipped { color: #047857; font-weight: 700; }
+    .badge-stub { color: #b45309; font-weight: 700; }
     .badge-never { color: var(--muted); font-weight: 600; }
 
-    .privacy {
-      background: #ecfdf5;
-      border: 1px solid #99f6e4;
-      border-radius: 12px;
-      padding: 1.35rem 1.5rem;
+    .privacy-band {
+      background: var(--navy);
+      color: var(--white);
+      padding: 3.5rem 1.5rem;
     }
-    .privacy h2 { font-size: 1.1rem; margin-bottom: 0.6rem; }
-    .privacy ul { margin-left: 1.2rem; color: var(--slate); }
-    .privacy li { margin-bottom: 0.3rem; }
+
+    .privacy-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .privacy-inner h2 {
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+    }
+
+    .privacy-inner ul {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .privacy-inner li {
+      padding: 0.85rem 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
 
     footer {
       border-top: 1px solid var(--border);
@@ -223,18 +417,32 @@
       text-align: center;
       color: var(--muted);
       font-size: 0.875rem;
+      background: var(--white);
     }
-    footer .publisher { color: var(--navy); font-weight: 600; }
 
-    @media (max-width: 900px) {
-      .hero, .pillars, .flow-list { grid-template-columns: 1fr; }
+    footer .publisher { color: var(--ink); font-weight: 700; }
+
+    @media (max-width: 960px) {
+      .hero,
+      .bento,
+      .privacy-inner,
+      .flow { grid-template-columns: 1fr; }
+      .bento-card.dark { grid-row: auto; }
+      .flow-step { border-right: none; border-bottom: 1px solid rgba(148, 163, 184, 0.15); }
+      .flow-step:last-child { border-bottom: none; }
+      .hero-copy h1 { max-width: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cta { transition: none; }
+      .cta:hover { transform: none; }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="brand">
-      <img src="../app-icon.svg" alt="" width="36" height="36" />
+      <img src="../app-icon.svg" alt="" width="38" height="38" />
       <div>
         <small>KM-it-ops</small>
         The Graduate's Guide
@@ -243,94 +451,116 @@
     <a class="gh" href="https://github.com/KM-it-ops/graduates-guide-desktop">GitHub</a>
   </header>
 
-  <section class="hero">
-    <div class="hero-copy">
-      <p class="tagline">Phase 1 · local vault · no auto-apply</p>
-      <h1>Your job search lives in a folder you own.</h1>
-      <p class="lede">
-        A desktop cockpit for daily missions, ranked queue, and paste-ready scripts.
-        Copy in the app — Send or Submit in your mail client or on the job site.
-      </p>
-      <div class="cta-row">
-        <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases">Download</a>
-        <a class="cta-secondary" href="https://github.com/KM-it-ops/graduates-guide-desktop#develop">Build from source</a>
+  <div class="hero-wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="tagline">Phase 1 · Tauri desktop · local vault</p>
+        <h1>Your job search lives in a <em>folder you own</em>.</h1>
+        <p class="lede">
+          Daily missions, ranked queue, paste-ready scripts — without a cloud account or an auto-apply bot.
+          Copy in the app. Send on the portal.
+        </p>
+        <div class="cta-row">
+          <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases">Download for desktop</a>
+          <a class="cta-secondary" href="https://github.com/KM-it-ops/graduates-guide-desktop#develop">Build from source →</a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-frame">
+          <img src="assets/readme-hero.png" alt="Layout illustration of the Today screen using sanitized fixture data" width="720" height="450" />
+        </div>
+        <p class="hero-caption">illustration · fixtures/sanitized-vault · not a live screenshot</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="manifest">
+    <div class="manifest-inner">
+      <p><strong>Copy in the app.</strong> You Send in your mail client or job portal. That boundary is the whole product.</p>
+      <div class="manifest-badges">
+        <span class="pill">No auto-apply</span>
+        <span class="pill">No telemetry (Phase 1)</span>
+        <span class="pill neutral">MIT</span>
       </div>
     </div>
-    <div>
-      <img src="assets/readme-hero.png" alt="Layout illustration of the Today screen using sanitized fixture data" width="720" height="450" />
-      <p class="hero-caption">Layout illustration · sanitized fixture data · not a live screenshot</p>
-    </div>
-  </section>
-
-  <div class="strip">
-    <strong>Copy in the app. You Send in your mail client or job portal.</strong> That boundary is the product.
   </div>
 
   <section class="section">
-    <h2>Built for focus</h2>
-    <div class="pillars">
-      <article class="pillar">
+    <div class="section-head">
+      <h2>Built for focus, not noise</h2>
+      <p>Three things the desktop shell does well today — everything else stays in your vault on disk.</p>
+    </div>
+    <div class="bento">
+      <article class="bento-card dark">
+        <h3>Today view</h3>
+        <p>One non-negotiable priority and up to five missions. Open a script, check it off, move on.</p>
+      </article>
+      <article class="bento-card light">
         <h3>Script reader</h3>
         <p>Paste-ready blocks with a <strong>Copy</strong> button — cover letters, outreach, interview prep.</p>
       </article>
-      <article class="pillar">
+      <article class="bento-card accent">
         <h3>Local vault</h3>
-        <p>Markdown on disk. Zip, encrypt, or sync yourself. No mandatory cloud account.</p>
-      </article>
-      <article class="pillar">
-        <h3>Today view</h3>
-        <p>One priority and up to five missions — no spreadsheet guilt.</p>
+        <p>Markdown you control. Zip it, encrypt it, Syncthing it. Your CV never lives on our servers.</p>
       </article>
     </div>
   </section>
 
   <section class="section" style="padding-top:0">
-    <h2>How it works</h2>
-    <div class="flow-list">
-      <div class="flow-item">
-        <h3>Import your vault</h3>
-        <p>Point at a local folder. Your CV and scripts never leave your machine.</p>
+    <div class="section-head">
+      <h2>How it works</h2>
+      <p>Four steps. You stay in the driver's seat for every send and submit.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <h3>Import vault</h3>
+        <p>Point at a folder on disk. Data stays where you put it.</p>
       </div>
-      <div class="flow-item">
+      <div class="flow-step">
         <h3>Open Today</h3>
-        <p>See what matters now — ranked missions and one non-negotiable priority.</p>
+        <p>Ranked missions and the one thing that moves the needle.</p>
       </div>
-      <div class="flow-item">
-        <h3>Copy the script</h3>
-        <p>Read blocks tuned to the role, copy to clipboard, paste where you need them.</p>
+      <div class="flow-step">
+        <h3>Copy script</h3>
+        <p>Read tuned blocks, copy to clipboard, paste where needed.</p>
       </div>
-      <div class="flow-item">
+      <div class="flow-step">
         <h3>You submit</h3>
-        <p>Send email or hit Submit on the job portal yourself. No bot impersonating you.</p>
+        <p>Email or job portal — yourself. No bot impersonating you.</p>
       </div>
     </div>
   </section>
 
   <section class="section" style="padding-top:0">
-    <h2>Phase 1 — what ships today</h2>
-    <table class="scope-table">
-      <thead>
-        <tr><th>Feature</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Import local vault</td><td class="badge-shipped">Shipped</td></tr>
-        <tr><td>Today missions</td><td class="badge-shipped">Shipped</td></tr>
-        <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped">Shipped</td></tr>
-        <tr><td>Script reader + Copy</td><td class="badge-shipped">Shipped</td></tr>
-        <tr><td>Apply assist (portal + script)</td><td class="badge-shipped">Shipped</td></tr>
-        <tr><td>Evaluate / Generate in-app</td><td class="badge-stub">Stub — engine CLI for now</td></tr>
-        <tr><td>In-app Send / auto-apply</td><td class="badge-never">Not offered (by design)</td></tr>
-      </tbody>
-    </table>
+    <div class="section-head">
+      <h2>Phase 1 scope</h2>
+      <p>Honest about what ships now versus what's still on the roadmap.</p>
+    </div>
+    <div class="scope-panel">
+      <table class="scope-table">
+        <thead>
+          <tr><th>Feature</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Import local vault</td><td class="badge-shipped">Shipped</td></tr>
+          <tr><td>Today missions</td><td class="badge-shipped">Shipped</td></tr>
+          <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped">Shipped</td></tr>
+          <tr><td>Script reader + Copy</td><td class="badge-shipped">Shipped</td></tr>
+          <tr><td>Apply assist (portal + script)</td><td class="badge-shipped">Shipped</td></tr>
+          <tr><td>Evaluate / Generate in-app</td><td class="badge-stub">Stub — engine CLI for now</td></tr>
+          <tr><td>In-app Send / auto-apply</td><td class="badge-never">Not offered (by design)</td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="privacy">
-      <h2>Privacy by default</h2>
+  <section class="privacy-band">
+    <div class="privacy-inner">
+      <h2>Privacy isn't a settings toggle. It's the architecture.</h2>
       <ul>
         <li>No telemetry in Phase 1 — crash reports are opt-in</li>
-        <li>Optional API keys live in the OS keychain, not vault files</li>
-        <li>CI uses synthetic fixtures only</li>
+        <li>API keys in the OS keychain, never in vault files</li>
+        <li>CI runs on synthetic fixtures only</li>
       </ul>
     </div>
   </section>
