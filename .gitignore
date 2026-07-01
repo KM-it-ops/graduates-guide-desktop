@@ -27,3 +27,22 @@ Thumbs.db
 
 # Engine junction is local dev; CI uses submodule
 /engine
+!.env.example
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+credentials.json
+secrets.json
+*.log
+.turbo/
+build/
+__pycache__/
+.pytest_cache/
+.venv/
+venv/
+*.tsbuildinfo
+.cursor/hooks/state/
+.agents/
+skills-lock.json
