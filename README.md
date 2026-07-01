@@ -1,20 +1,28 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/social-card.png" />
+  <img src="docs/assets/social-card.png" alt="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" width="100%" />
+</picture>
+
 <div align="center">
 
 # The Graduate's Guide
 
-**Your job search lives in a folder you own.**
+### Your job search lives in a folder **you own**.
 
-Privacy-first desktop cockpit by **[KM-it-ops](https://github.com/KM-it-ops)** · Phase 1
+Privacy-first **Tauri** desktop by **[KM-it-ops](https://github.com/KM-it-ops)** · Phase 1
 
-[![Releases](https://img.shields.io/github/v/release/KM-it-ops/graduates-guide-desktop?label=release)](https://github.com/KM-it-ops/graduates-guide-desktop/releases)
+[![Releases](https://img.shields.io/github/v/release/KM-it-ops/graduates-guide-desktop?label=release&color=2563eb)](https://github.com/KM-it-ops/graduates-guide-desktop/releases)
 [![License](https://img.shields.io/github/license/KM-it-ops/graduates-guide-desktop)](LICENSE)
-[![Tauri](https://img.shields.io/badge/desktop-Tauri-24C8DB)](https://tauri.app/)
+[![Tauri](https://img.shields.io/badge/stack-Tauri-24C8DB)](https://tauri.app/)
+[![No auto-apply](https://img.shields.io/badge/auto--apply-none-0f766e)](landing/index.html)
 
-<img src="docs/assets/readme-hero.png" alt="Layout illustration of the Today screen (sanitized fixture data, not a live screenshot)" width="720" />
+<img src="docs/assets/readme-hero.png" alt="Today screen layout illustration (sanitized fixture data)" width="720" />
 
-*Illustration only — sanitized fixture data. The app has **Copy** and **Open script**; you Send or Submit in your mail client or job portal.*
+<sub><strong>Illustration only</strong> — sanitized fixture data · <strong>Copy</strong> + <strong>Open script</strong> in-app · you Send/Submit externally</sub>
 
-[Download](https://github.com/KM-it-ops/graduates-guide-desktop/releases) · [Landing](landing/index.html) · [Develop](#develop)
+<br /><br />
+
+[**Download**](https://github.com/KM-it-ops/graduates-guide-desktop/releases) · [**Landing page**](landing/index.html) · [**Develop**](#develop)
 
 </div>
 
@@ -22,36 +30,52 @@ Privacy-first desktop cockpit by **[KM-it-ops](https://github.com/KM-it-ops)** �
 
 ## What ships in Phase 1
 
-| Feature | Status |
-|---------|--------|
-| Import local vault | Shipped |
-| Today missions | Shipped |
-| Queue & follow-ups | Shipped |
-| Script reader + **Copy** | Shipped |
-| Apply assist (portal + script) | Shipped |
-| Evaluate / Generate in-app | Stub — engine CLI for now |
-| In-app Send / auto-apply | **Not offered** (by design) |
+| | |
+|:--|:--|
+| **Vault import** | Shipped |
+| **Today · Queue · Follow-ups** | Shipped |
+| **Script reader + Copy** | Shipped |
+| **Apply assist** | Shipped |
+| **Evaluate / Generate in-app** | Stub — use engine CLI |
+| **In-app Send / auto-apply** | Not offered (by design) |
 
 ## Why it exists
 
-You need the words before the interview — not another agent chewing through your machine. Graduate's Guide is a calm shell around a **local markdown vault**: what to do today, ranked queue, paste-ready scripts.
+You need the words **before** the interview — not another agent chewing through your machine. A calm shell around a local markdown vault: what to do today, ranked queue, paste-ready scripts.
 
-## What it is not
+<table>
+<tr>
+<td width="50%">
 
-- Auto-apply or bots that submit for you  
-- A hosted account storing your CV  
-- A pixel-perfect in-app clone of every engine CLI workflow yet  
+**What you get**
+- Today — max 5 missions, one priority
+- Queue — ranked from your vault
+- Scripts — Copy button, not in-app Send
+- Apply assist — portal + script side by side
+
+</td>
+<td width="50%">
+
+**What it is not**
+- Auto-apply bots
+- Hosted CV storage
+- Full CLI parity inside Tauri yet
+
+</td>
+</tr>
+</table>
 
 ## Privacy
 
-- Vault path is yours — CV, tracker, scripts stay on disk  
-- No mandatory account; no telemetry in Phase 1  
-- API keys optional, OS keychain only  
-- Crash reports opt-in (off by default)  
+| | |
+|:--|:--|
+| Vault on disk | You pick the folder |
+| Accounts | None required |
+| Telemetry | Off in Phase 1 |
+| API keys | OS keychain only |
+| Crash reports | Opt-in |
 
 ## Develop
-
-**Needs:** Node 20+, Rust, npm
 
 ```bash
 git clone https://github.com/KM-it-ops/graduates-guide-desktop.git
@@ -62,7 +86,7 @@ npm install
 npm run tauri:dev
 ```
 
-First launch → **Import vault** → your job-search folder, or `fixtures/sanitized-vault/` for a safe demo.
+First launch → **Import vault** → your folder, or `fixtures/sanitized-vault/` for a safe demo.
 
 | Command | Purpose |
 |---------|---------|
@@ -73,8 +97,7 @@ First launch → **Import vault** → your job-search folder, or `fixtures/sanit
 
 ## More
 
-- [Migrate from CLI](docs/migrate-from-cli.md)
-- [Engine updates](docs/engine-update.md)
+- [Migrate from CLI](docs/migrate-from-cli.md) · [Engine updates](docs/engine-update.md)
 
 ## License
 
