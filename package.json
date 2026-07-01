@@ -1,0 +1,42 @@
+{
+  "name": "graduates-guide-desktop",
+  "version": "0.1.0",
+  "description": "The Graduate's Guide — privacy-first local job hunt cockpit",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "test": "vitest run",
+    "privacy-audit": "node scripts/privacy-audit.mjs",
+    "postinstall": "node scripts/link-engine.mjs"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource/ibm-plex-sans": "^5.2.5",
+    "@tauri-apps/api": "^2.2.0",
+    "@tauri-apps/plugin-clipboard-manager": "^2.2.0",
+    "@tauri-apps/plugin-dialog": "^2.2.0",
+    "@tauri-apps/plugin-fs": "^2.2.0",
+    "@tauri-apps/plugin-shell": "^2.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.3",
+    "react-router-dom": "^7.1.1",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.2.7",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  },
+  "license": "MIT"
+}

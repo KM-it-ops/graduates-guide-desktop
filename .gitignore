@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+dist/
+
+# Tauri
+src-tauri/target/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env / secrets
+.env
+.env.*
+
+# User vaults (never commit real data)
+*.vault.local/
+
+# IDE
+.idea/
+.vscode/
+
+# Build output
+*.msi
+*.dmg
+*.exe
+
+# Engine junction is local dev; CI uses submodule
+/engine

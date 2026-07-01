@@ -1,0 +1,49 @@
+/* Design tokens — synced with career-ops .ui-design/design-system.json + Wells Fargo study guide */
+:root {
+  --navy: #0f172a;
+  --navy-mid: #1e293b;
+  --slate: #334155;
+  --muted: #64748b;
+  --paper: #f8fafc;
+  --white: #ffffff;
+  --primary: #1d4ed8;
+  --accent: #0f766e;
+  --accent-light: #ccfbf1;
+  --success: #15803d;
+  --warning: #b45309;
+  --warning-light: #fef3c7;
+  --danger: #b91c1c;
+  --danger-light: #fee2e2;
+  --border: #e2e8f0;
+  --script-bg: #f1f5f9;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='dark'] {
+  --bg: var(--navy);
+  --bg-elevated: var(--navy-mid);
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --script-bg: #1e293b;
+  --paper: var(--navy-mid);
+}
+
+[data-theme='light'] {
+  --bg: var(--paper);
+  --bg-elevated: var(--white);
+  --text: var(--navy);
+  --text-muted: var(--muted);
+  --script-bg: #f1f5f9;
+  --paper: var(--white);
+}
