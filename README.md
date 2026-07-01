@@ -54,6 +54,12 @@ CI uses `fixtures/sanitized-vault/` (no real PII). Mahmoud's vault: import `care
 - [Migrate from career-ops CLI](docs/migrate-from-cli.md)
 - [Engine updates](docs/engine-update.md)
 
+## Credits
+
+- [career-ops](https://github.com/santifer/career-ops) by [Santiago Fernández de Valderrama](https://github.com/santifer) (MIT) — evaluation engine, modes, and CLI tooling
+- **The Graduate's Guide** is an independent desktop app; it is not affiliated with or endorsed by the career-ops project
+- Engine submodule: [KM-it-ops/career-ops](https://github.com/KM-it-ops/career-ops) (fork used for integration and private development)
+
 ## License
 
-MIT — powered by open-source career-ops (santifer lineage).
+MIT — see [LICENSE](LICENSE). Built on open-source [career-ops](https://github.com/santifer/career-ops).
