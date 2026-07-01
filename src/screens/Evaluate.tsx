@@ -27,8 +27,11 @@ export function EvaluateScreen() {
   return (
     <>
       <h1 className="page-title">Evaluate offer</h1>
+      <p style={{ color: 'var(--text-muted)', marginBottom: 8 }}>
+        <strong>Phase 2 preview.</strong> In-app headless evaluate is not wired yet — use the bundled engine / CLI against the same vault.
+      </p>
       <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>
-        Paste a job URL. You review the report before applying. <strong>You click Send.</strong>
+        Paste a job URL here to save your workflow intent. When evaluation runs, you review the report before you apply or send anything yourself.
       </p>
 
       <section className="card">

@@ -2,37 +2,49 @@
 
 **Your job search lives in a folder you own.**
 
-A privacy-first desktop cockpit by **[KM-it-ops](https://github.com/KM-it-ops)** — for people who need the words *before* the interview, not another agent terminal on their machine.
+A privacy-first desktop cockpit by **[KM-it-ops](https://github.com/KM-it-ops)** — Phase 1 ships the shell around your local vault: Today, Queue, script reader with **Copy**, and follow-ups. Evaluation packs still flow through the bundled engine / CLI where noted below.
 
-**[Preview the landing page](landing/index.html)** · **[Download releases](https://github.com/KM-it-ops/graduates-guide-desktop/releases)**
+**[Landing page](landing/index.html)** · **[Releases](https://github.com/KM-it-ops/graduates-guide-desktop/releases)**
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="landing/assets/social-card.png" />
-  <img src="landing/assets/hero-ui.svg" alt="Graduate's Guide app preview — Today view with mission queue and Send" width="960" />
+  <img src="landing/assets/hero-ui.svg" alt="Layout illustration of the Today screen using sanitized fixture data — not a live screenshot" width="960" />
 </picture>
 
-Open **Today**. Read the script. Copy the line. Click **Send**. You stay in control.
+<p align="center"><sub>Layout illustration (sanitized fixture data). The app has <strong>Copy</strong> and <strong>Open script</strong> — you Send/Submit in your own mail client or job portal.</sub></p>
+
+## Phase 1 — what works today
+
+| Feature | Status |
+|---------|--------|
+| Import local vault | Shipped |
+| **Today** missions (engine daily) | Shipped |
+| **Queue** (ranked applications) | Shipped |
+| **Script reader** + clipboard Copy | Shipped |
+| **Follow-ups** list + script links | Shipped |
+| **Apply assist** (script + open job portal) | Shipped |
+| **Evaluate** / **Generate** in-app | Stub — use engine CLI + vault for now |
+| Auto-apply / in-app Send button | **Not offered** (by design) |
 
 ## What you get
 
-- **Today** — one screen for what matters right now
-- **Queue** — ranked opportunities with context, not spreadsheet guilt
-- **Script reader** — paste-ready blocks for forms, email, and follow-ups
-- **Apply assist** — field-by-field prep; you submit, not a bot
-- **Local vault** — markdown on disk; zip it, encrypt it, Syncthing it — your call
+- **Today** — one screen for what matters right now (max 5 missions)
+- **Queue** — ranked opportunities from your vault
+- **Script reader** — paste-ready blocks via **Copy**, not an in-app Send button
+- **Apply assist** — script beside the job portal; **you** click Submit on the site
+- **Local vault** — markdown on disk; zip, encrypt, or sync yourself
 
 ## What this is not
 
-- Auto-apply
-- A hosted account with your CV on someone else's servers
-- A cloud rewrite of your job search
+- Auto-apply or a bot that submits for you
+- A hosted account storing your CV
+- A screenshot-perfect clone of every career-ops CLI feature inside Tauri yet
 
 ## Privacy
 
 - Vault path is yours — CV, tracker, scripts stay in a folder you pick
 - No mandatory account, no telemetry in Phase 1
-- Optional API keys live in the OS keychain, not in vault files
-- Crash reports are opt-in (off by default)
+- Optional API keys in the OS keychain, not in vault files
+- Crash reports opt-in (off by default) — see Settings
 
 ## Develop
 
@@ -47,13 +59,7 @@ npm install
 npm run tauri:dev
 ```
 
-First launch → **Import vault** → point at your local job-search data directory.
-
-Sidecar (headless):
-
-```bash
-CAREER_OPS_VAULT=/path/to/vault node engine/graduates-guide-desktop-api.mjs daily
-```
+First launch → **Import vault** → your local job-search data directory (or `fixtures/sanitized-vault/` for a safe demo).
 
 ## Commands
 
@@ -62,11 +68,7 @@ CAREER_OPS_VAULT=/path/to/vault node engine/graduates-guide-desktop-api.mjs dail
 | `npm run tauri:dev` | Dev shell + hot reload |
 | `npm run tauri:build` | Release `.msi` / `.dmg` |
 | `npm test` | Vitest |
-| `npm run privacy-audit` | No HTTP permissions / telemetry |
-
-## Fixtures
-
-CI uses `fixtures/sanitized-vault/` — synthetic data only. Never commit a real vault.
+| `npm run privacy-audit` | No HTTP permissions / telemetry deps |
 
 ## More
 

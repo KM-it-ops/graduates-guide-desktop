@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Graduate's Guide — KM-it-ops</title>
-  <meta name="description" content="Privacy-first desktop job hunt cockpit. Your vault. Your scripts. You click Send." />
+  <meta name="description" content="Privacy-first desktop job hunt cockpit. Local vault, script reader with Copy — you Send in your mail client or job portal. Phase 1." />
   <meta property="og:title" content="The Graduate's Guide" />
-  <meta property="og:description" content="Your job search lives in a folder you own." />
-  <meta property="og:image" content="assets/social-card.png" />
+  <meta property="og:description" content="Your job search lives in a folder you own. Copy in the app; you Send on the portal." />
+  <meta property="og:image" content="assets/og-card.svg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="assets/social-card.png" />
+  <meta name="twitter:image" content="assets/og-card.svg" />
   <link rel="icon" href="../app-icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -200,6 +200,37 @@
     .privacy ul { margin-left: 1.25rem; color: var(--slate); }
     .privacy li { margin-bottom: 0.35rem; }
 
+    .hero-caption {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+    .scope {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+    .scope h2 { font-size: 1.35rem; margin-bottom: 1rem; }
+    .scope-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .scope-table th, .scope-table td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .scope-table th { background: #f1f5f9; font-weight: 600; }
+    .scope-table tr:last-child td { border-bottom: none; }
+    .badge-shipped { color: #047857; font-weight: 600; }
+    .badge-stub { color: #b45309; font-weight: 600; }
+    .badge-never { color: var(--muted); font-weight: 600; }
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 1.5rem 3rem;
@@ -229,11 +260,11 @@
 
   <section class="hero">
     <div class="hero-copy">
-      <p class="tagline">Desktop · local vault · you click Send</p>
+      <p class="tagline">Phase 1 · local vault · Copy in app, Send on portal</p>
       <h1>Your job search lives in a folder you own.</h1>
       <p class="lede">
         A privacy-first cockpit for people who need the words <em>before</em> the interview —
-        not another agent terminal chewing through your machine.
+        not another agent terminal chewing through your machine. Honest scope: Today, Queue, scripts, and follow-ups ship now; in-app evaluate/generate are still wiring up.
       </p>
       <div class="cta-row">
         <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases">Download</a>
@@ -241,12 +272,13 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img src="assets/hero-ui.svg" alt="Graduate's Guide Today screen mockup" width="960" height="600" />
+      <img src="assets/hero-ui.svg" alt="Layout illustration of the Today screen using sanitized fixture data — not a live screenshot" width="960" height="600" />
+      <p class="hero-caption">Layout illustration · sanitized fixture data · app has <strong>Copy</strong> and <strong>Open script</strong>, not an in-app Send button</p>
     </div>
   </section>
 
   <div class="strip">
-    <strong>You click Send.</strong> We prepare every field. We never auto-apply. That line is the product.
+    <strong>Copy in the app. You Send in your mail client or job portal.</strong> No auto-apply — that boundary is the product.
   </div>
 
   <section class="features">
@@ -256,7 +288,7 @@
         <path d="M12 14h16M12 20h16M12 26h10" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
       <h3>Script reader</h3>
-      <p>Full paste-ready blocks for applications, follow-ups, and LinkedIn — not bullet prompts you have to improvise.</p>
+      <p>Full paste-ready blocks with a <strong>Copy</strong> button — cover letter lines, outreach, interview prep. You paste or send outside the app.</p>
     </article>
     <article class="feature">
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -298,10 +330,28 @@
       </div>
       <div class="step">
         <div class="num">04</div>
-        <h3>Click Send</h3>
-        <p>You submit. No bot impersonating you. No silent auto-apply.</p>
+        <h3>You submit</h3>
+        <p>Paste from clipboard or hit Send in your email client / job site. No bot impersonating you.</p>
       </div>
     </div>
+  </section>
+
+  <section class="scope">
+    <h2>Phase 1 — what ships today</h2>
+    <table class="scope-table">
+      <thead>
+        <tr><th>Feature</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Import local vault</td><td class="badge-shipped">Shipped</td></tr>
+        <tr><td>Today missions</td><td class="badge-shipped">Shipped</td></tr>
+        <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped">Shipped</td></tr>
+        <tr><td>Script reader + Copy</td><td class="badge-shipped">Shipped</td></tr>
+        <tr><td>Apply assist (portal + script)</td><td class="badge-shipped">Shipped</td></tr>
+        <tr><td>Evaluate / Generate in-app</td><td class="badge-stub">Stub — use engine CLI for now</td></tr>
+        <tr><td>In-app Send / auto-apply</td><td class="badge-never">Not offered (by design)</td></tr>
+      </tbody>
+    </table>
   </section>
 
   <section class="privacy-band">
