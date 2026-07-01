@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" fill="none">
+  <rect width="960" height="600" rx="24" fill="#F8FAFC"/>
+  <rect x="24" y="24" width="912" height="552" rx="16" fill="#0F172A"/>
+  <rect x="24" y="24" width="200" height="552" fill="#1E293B"/>
+  <text x="48" y="68" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="18" font-weight="700" fill="#F8FAFC">Graduate's Guide</text>
+  <rect x="48" y="96" width="152" height="32" rx="8" fill="#1D4ED8"/>
+  <text x="64" y="118" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Today</text>
+  <text x="64" y="158" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Queue</text>
+  <text x="64" y="186" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Follow-ups</text>
+  <text x="64" y="214" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Evaluate</text>
+  <rect x="248" y="56" width="664" height="48" rx="10" fill="#CCFBF1" fill-opacity="0.12" stroke="#0F766E" stroke-width="2"/>
+  <text x="268" y="86" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="14" fill="#5EEAD4">You click Send  we never auto-apply</text>
+  <text x="248" y="140" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="32" font-weight="700" fill="#F8FAFC">Today</text>
+  <rect x="248" y="164" width="664" height="96" rx="14" fill="#1E293B" stroke="#334155"/>
+  <text x="272" y="196" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="12" fill="#94A3B8">IF YOU ONLY DO ONE THING</text>
+  <text x="272" y="232" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="20" font-weight="600" fill="#F8FAFC">Send the Wells Fargo follow-up script</text>
+  <rect x="248" y="284" width="664" height="72" rx="12" fill="#1E293B" stroke="#334155"/>
+  <rect x="272" y="304" width="20" height="20" rx="4" fill="#1D4ED8"/>
+  <text x="304" y="318" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#F8FAFC">P1 · Draft outreach for BluOmega VM role</text>
+  <text x="304" y="340" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Script ready · 4 min · local vault</text>
+  <rect x="248" y="372" width="664" height="72" rx="12" fill="#1E293B" stroke="#334155"/>
+  <rect x="272" y="392" width="20" height="20" rx="4" stroke="#64748B" stroke-width="2"/>
+  <text x="304" y="406" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#E2E8F0">P2 · Review Supabase SecOps talking points</text>
+  <text x="304" y="428" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Interview prep pack · 12 min</text>
+  <rect x="248" y="468" width="320" height="88" rx="14" fill="#F1F5F9"/>
+  <text x="272" y="500" font-family="IBM Plex Mono, Consolas, monospace" font-size="12" fill="#334155">Hi team  following up on my application...</text>
+  <text x="272" y="522" font-family="IBM Plex Mono, Consolas, monospace" font-size="12" fill="#64748B">[copy block ready]</text>
+  <rect x="592" y="500" width="120" height="40" rx="10" fill="#1D4ED8"/>
+  <text x="628" y="526" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Send</text>
+</svg>
