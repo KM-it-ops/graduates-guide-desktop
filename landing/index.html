@@ -6,26 +6,29 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';" />
   <meta name="theme-color" content="#0f172a" />
   <title>The Graduate's Guide — KM-it-ops</title>
-  <meta name="description" content="Privacy-first desktop job hunt cockpit. Local vault, Copy in app — you Send on the portal." />
+  <meta name="description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
   <link rel="canonical" href="https://km-it-ops.github.io/graduates-guide-desktop/landing/" />
   <meta property="og:title" content="The Graduate's Guide" />
-  <meta property="og:description" content="Your job search lives in a folder you own. Copy in app — Send on the portal." />
+  <meta property="og:description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/" />
-  <meta property="og:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card.png" />
-  <meta property="og:image:width" content="1536" />
-  <meta property="og:image:height" content="1024" />
+  <meta property="og:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card-og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content="The Graduate's Guide — Your job search lives in a folder you own. Copy in the app. Send in your portal." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="The Graduate's Guide" />
-  <meta name="twitter:description" content="Privacy-first desktop job hunt cockpit. Local vault, Copy in app — you Send on the portal." />
-  <meta name="twitter:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card.png" />
+  <meta name="twitter:description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
+  <meta name="twitter:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card-og.png" />
+  <meta name="twitter:image:alt" content="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" />
   <link rel="icon" href="../app-icon.svg" type="image/svg+xml" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "The Graduate's Guide",
+    "softwareVersion": "0.1.0",
     "operatingSystem": "Windows, macOS, Linux",
     "applicationCategory": "ProductivityApplication",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -203,6 +206,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      flex-wrap: wrap;
       font-family: var(--mono);
       font-size: clamp(0.75rem, 2vw, 0.82rem);
       font-weight: 600;
@@ -267,13 +271,45 @@
       padding: 0.95rem 1.35rem;
       min-height: 48px;
       display: inline-flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 0.15rem;
+      line-height: 1.2;
       background: linear-gradient(135deg, var(--accent-soft), var(--accent));
       border-radius: 6px;
       transition: transform 0.2s var(--ease), box-shadow 0.2s;
       -webkit-tap-highlight-color: transparent;
     }
+
+    .cta-platforms {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      opacity: 0.85;
+      text-transform: none;
+    }
+
+    .download-links {
+      font-family: var(--mono);
+      font-size: clamp(0.8rem, 2.2vw, 0.85rem);
+      color: var(--dim);
+      text-align: center;
+      width: 100%;
+      margin: 0;
+    }
+
+    @media (min-width: 480px) {
+      .download-links { text-align: left; width: auto; }
+    }
+
+    .download-links a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .download-links a:hover { color: var(--accent-soft); }
 
     .cta:active { transform: scale(0.98); }
 
@@ -385,6 +421,14 @@
 
     .pill.dim { border-color: rgba(148, 163, 184, 0.25); color: var(--muted); }
 
+    .tauri-pill {
+      border-color: rgba(36, 200, 219, 0.45);
+      color: #24c8db;
+      background: rgba(36, 200, 219, 0.08);
+      text-transform: none;
+      letter-spacing: 0.02em;
+    }
+
     .section {
       max-width: var(--max);
       margin: 0 auto;
@@ -450,6 +494,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1.25rem 0.75rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
     @media (min-width: 768px) {
@@ -489,6 +536,23 @@
       border-radius: 8px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+    }
+
+    .scope-panel:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
 
     .scope-table {
@@ -588,6 +652,27 @@
       html { scroll-behavior: auto; }
       .cta { transition: none; }
     }
+
+    @media (max-width: 639px) {
+      .pill,
+      .scope-table th,
+      footer,
+      .pipe-node {
+        font-size: 0.8rem;
+      }
+
+      .cta,
+      .cta-secondary,
+      .topbar a.gh,
+      .hero-caption,
+      .pipe-step h3 {
+        font-size: 0.85rem;
+      }
+
+      .brand small {
+        font-size: 0.75rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -603,25 +688,40 @@
           Graduate's Guide
         </div>
       </div>
-      <a class="gh" href="https://github.com/KM-it-ops/graduates-guide-desktop" rel="noopener noreferrer">GitHub</a>
+      <nav aria-label="Site">
+        <a class="gh" href="https://github.com/KM-it-ops/graduates-guide-desktop" rel="noopener noreferrer" aria-label="View source on GitHub (opens in new tab)">GitHub</a>
+      </nav>
     </header>
 
     <main id="main-content">
       <div class="hero-wrap">
         <section class="hero" aria-labelledby="hero-heading">
           <div class="hero-copy">
-            <p class="tagline">Phase 1 · Local vault · No auto-apply</p>
+            <p class="tagline">
+              Phase 1 · Local vault · No auto-apply
+              <span class="pill tauri-pill">Tauri 2</span>
+            </p>
             <h1 id="hero-heading">Your job search lives in a <span class="accent">folder you own</span>.</h1>
             <p class="lede">
               Daily missions. Ranked queue. Paste-ready scripts.
-              Copy in the app — Send on the portal. No cloud lock-in. No bot.
+              Copy in the app — Send on the portal or in your mail client. No cloud lock-in. No bot.
             </p>
             <p class="why">
               Your data never routes through our servers. The app reads your vault on disk and puts words on your clipboard — you choose where they go.
             </p>
             <div class="cta-row">
-              <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases" rel="noopener noreferrer">Download · macOS / Windows / Linux</a>
-              <a class="cta-secondary" href="https://github.com/KM-it-ops/graduates-guide-desktop#develop" rel="noopener noreferrer">Build from source</a>
+              <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases/latest" rel="noopener noreferrer" aria-label="Download latest release from GitHub (opens in new tab)">
+                Download v0.1.0
+                <span class="cta-platforms">macOS · Windows · Linux</span>
+              </a>
+              <a class="cta-secondary" href="https://github.com/KM-it-ops/graduates-guide-desktop#develop" rel="noopener noreferrer" aria-label="Build from source on GitHub (opens in new tab)">Build from source</a>
+              <p class="download-links" aria-label="Download by platform">
+                <a href="https://github.com/KM-it-ops/graduates-guide-desktop/releases/latest" rel="noopener noreferrer">All releases</a>
+                <span aria-hidden="true"> · </span>
+                <a href="https://github.com/KM-it-ops/graduates-guide-desktop/releases" rel="noopener noreferrer">macOS &amp; Windows builds</a>
+                <span aria-hidden="true"> · </span>
+                <a href="https://github.com/KM-it-ops/graduates-guide-desktop#develop" rel="noopener noreferrer">Build for Linux</a>
+              </p>
             </div>
           </div>
           <figure class="hero-shot">
@@ -638,7 +738,7 @@
           <p><strong>Copy in the app.</strong> You Send in your mail client or job portal.</p>
           <div class="pills">
             <span class="pill">No auto-apply</span>
-            <span class="pill">No telemetry</span>
+            <span class="pill">Telemetry off</span>
             <span class="pill dim">MIT</span>
           </div>
         </div>
@@ -671,8 +771,8 @@
             <p>Portal and script side by side — copy, paste, submit yourself.</p>
           </article>
           <article class="feature-card">
-            <h3>Local vault</h3>
-            <p>Markdown on your disk. Zip, encrypt, sync. Your CV stays local.</p>
+            <h3>Vault import</h3>
+            <p>Point at your folder on disk. Zip, encrypt, sync — your CV stays local.</p>
           </article>
         </div>
       </section>
@@ -682,28 +782,28 @@
           <h2 id="how-heading">How it works</h2>
           <p>You drive every send and submit.</p>
         </div>
-        <div class="pipeline">
-          <div class="pipe-step">
-            <div class="pipe-node" aria-hidden="true">1</div>
+        <ol class="pipeline" aria-label="Four steps from vault to submit">
+          <li class="pipe-step">
+            <span class="pipe-node" aria-hidden="true">1</span>
             <h3>Import</h3>
             <p>Point at your folder.</p>
-          </div>
-          <div class="pipe-step">
-            <div class="pipe-node" aria-hidden="true">2</div>
+          </li>
+          <li class="pipe-step">
+            <span class="pipe-node" aria-hidden="true">2</span>
             <h3>Today</h3>
             <p>Ranked missions.</p>
-          </div>
-          <div class="pipe-step">
-            <div class="pipe-node" aria-hidden="true">3</div>
+          </li>
+          <li class="pipe-step">
+            <span class="pipe-node" aria-hidden="true">3</span>
             <h3>Copy</h3>
             <p>Clipboard ready.</p>
-          </div>
-          <div class="pipe-step">
-            <div class="pipe-node" aria-hidden="true">4</div>
+          </li>
+          <li class="pipe-step">
+            <span class="pipe-node" aria-hidden="true">4</span>
             <h3>Submit</h3>
             <p>You on the portal.</p>
-          </div>
-        </div>
+          </li>
+        </ol>
       </section>
 
       <section class="section" style="padding-top:0" aria-labelledby="scope-heading">
@@ -711,19 +811,20 @@
           <h2 id="scope-heading">Phase 1 scope</h2>
           <p>Shipped vs roadmap — honest about what is and is not built.</p>
         </div>
-        <div class="scope-panel">
+        <div class="scope-panel" tabindex="0" role="region" aria-label="Phase 1 scope table (scroll horizontally on small screens)">
           <table class="scope-table">
+            <caption class="visually-hidden">Phase 1 feature scope and shipping status</caption>
             <thead>
               <tr><th scope="col">Feature</th><th scope="col">Status</th></tr>
             </thead>
             <tbody>
-              <tr><td>Import local vault</td><td class="badge-shipped">Shipped</td></tr>
-              <tr><td>Today missions</td><td class="badge-shipped">Shipped</td></tr>
-              <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped">Shipped</td></tr>
-              <tr><td>Script reader + Copy</td><td class="badge-shipped">Shipped</td></tr>
-              <tr><td>Apply assist</td><td class="badge-shipped">Shipped</td></tr>
-              <tr><td>Evaluate / Generate</td><td class="badge-stub">Stub — use CLI</td></tr>
-              <tr><td>In-app Send / auto-apply</td><td class="badge-never">Not offered (by design)</td></tr>
+              <tr><td>Vault import</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
+              <tr><td>Today missions</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
+              <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
+              <tr><td>Script reader + Copy</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
+              <tr><td>Apply assist</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
+              <tr><td>Evaluate / Generate in-app</td><td class="badge-stub"><span class="visually-hidden">Status: </span>Stub — use engine CLI</td></tr>
+              <tr><td>In-app Send / auto-apply</td><td class="badge-never"><span class="visually-hidden">Status: </span>Not offered (by design)</td></tr>
             </tbody>
           </table>
         </div>
@@ -736,11 +837,13 @@
             <p class="privacy-lede">No account. No hosted CV. Your folder, your machine, your sends.</p>
           </div>
           <ul class="privacy-list">
+            <li>Vault on disk — you pick the folder</li>
             <li>No account required</li>
-            <li>Vault stays on your machine — you pick the folder</li>
-            <li>No telemetry — crash reports are opt-in</li>
-            <li>API keys stored in OS keychain only</li>
-            <li>CI uses synthetic fixtures, never real vault data</li>
+            <li>Telemetry — none (Phase 1)</li>
+            <li>API keys — OS keychain only</li>
+            <li>Crash reports — opt-in only</li>
+            <li>Hosted CV — never; vault stays on your machine</li>
+            <li>CI / fixtures — synthetic only, never real vault data</li>
           </ul>
         </div>
       </section>
