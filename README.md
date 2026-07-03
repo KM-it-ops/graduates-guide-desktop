@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/social-card.png" />
-  <img src="docs/assets/social-card.png" alt="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="landing/assets/social-card.png" />
+  <img src="landing/assets/social-card.png" alt="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" width="100%" />
 </picture>
 
 <div align="center">
@@ -16,9 +16,9 @@ Privacy-first **Tauri** desktop by **[KM-it-ops](https://github.com/KM-it-ops)**
 [![Tauri](https://img.shields.io/badge/stack-Tauri-24C8DB)](https://tauri.app/)
 [![No auto-apply](https://img.shields.io/badge/auto--apply-none-0f766e)](https://km-it-ops.github.io/graduates-guide-desktop/landing/)
 
-<img src="docs/assets/readme-hero.png" alt="Today screen layout illustration (sanitized fixture data)" width="720" />
+<img src="landing/assets/readme-hero.png" alt="Today screen layout illustration (sanitized fixture data)" width="720" />
 
-<sub><strong>Illustration only</strong> — sanitized fixture data · <strong>Copy</strong> + <strong>Open script</strong> in-app · you Send/Submit externally</sub>
+<sub><strong>Illustration only</strong> — sanitized fixture data · <strong>Copy</strong> in-app · you Send on the portal or in your mail client</sub>
 
 <br /><br />
 
@@ -50,6 +50,7 @@ You need the words **before** the interview — not another agent chewing throug
 **What you get**
 - Today — max 5 missions, one priority
 - Queue — ranked from your vault
+- Follow-ups — nudge tracking from your vault
 - Scripts — Copy button, not in-app Send
 - Apply assist — portal + script side by side
 
@@ -71,9 +72,11 @@ You need the words **before** the interview — not another agent chewing throug
 |:--|:--|
 | Vault on disk | You pick the folder |
 | Accounts | None required |
-| Telemetry | Off in Phase 1 |
+| Telemetry | None (Phase 1) |
 | API keys | OS keychain only |
-| Crash reports | Opt-in |
+| Crash reports | Opt-in only |
+| Hosted CV | Never — vault stays on your machine |
+| CI / fixtures | Synthetic only — never real vault data |
 
 ## Develop
 

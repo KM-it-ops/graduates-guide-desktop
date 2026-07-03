@@ -11,7 +11,8 @@ export function Layout({ vaultPath }: Props) {
       <EthicalBanner />
       <div className="app-main">
         <aside className="app-sidebar">
-          <div style={{ marginBottom: 16, fontWeight: 700, fontSize: '0.95rem' }}>
+          <div className="sidebar-brand">
+            <small>KM-it-ops</small>
             Graduate&apos;s Guide
           </div>
           {vaultPath ? (

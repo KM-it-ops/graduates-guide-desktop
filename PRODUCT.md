@@ -6,7 +6,7 @@ brand
 
 ## Purpose
 
-Privacy-first desktop cockpit (Tauri) for a local job-search vault: Today missions, Queue, script reader with Copy, follow-ups, apply assist. User sends/submits outside the app.
+Privacy-first desktop cockpit (Tauri) for a local job-search vault: vault import, Today missions, Queue, script reader with Copy, follow-ups, apply assist. User sends/submits outside the app.
 
 ## Users
 

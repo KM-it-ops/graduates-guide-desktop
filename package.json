@@ -13,6 +13,7 @@
     "tauri:build": "tauri build",
     "test": "vitest run",
     "privacy-audit": "node scripts/privacy-audit.mjs",
+    "generate:social-card": "node scripts/generate-social-card-og.mjs",
     "postinstall": "node scripts/link-engine.mjs"
   },
   "dependencies": {
@@ -30,6 +31,7 @@
     "remark-gfm": "^4.0.0"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tauri-apps/cli": "^2.2.7",
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
