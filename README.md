@@ -72,9 +72,9 @@ You need the words **before** the interview — not another agent chewing throug
 |:--|:--|
 | Vault on disk | You pick the folder |
 | Accounts | None required |
-| Telemetry | None (Phase 1) |
+| Telemetry | None in Phase 1 |
 | API keys | OS keychain only |
-| Crash reports | Opt-in only |
+| Crash reports | Preference stub only (reporter planned Phase 4) |
 | Hosted CV | Never — vault stays on your machine |
 | CI / fixtures | Synthetic only — never real vault data |
 
