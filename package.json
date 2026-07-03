@@ -13,6 +13,7 @@
     "tauri:build": "tauri build",
     "test": "vitest run",
     "privacy-audit": "node scripts/privacy-audit.mjs",
+    "privacy-audit:full": "PRIVACY_AUDIT_README=1 node scripts/privacy-audit.mjs",
     "generate:social-card": "node scripts/generate-social-card-og.mjs",
     "postinstall": "node scripts/link-engine.mjs"
   },
