@@ -3,35 +3,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#030712" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';" />
+  <meta name="theme-color" content="#0f172a" />
   <title>The Graduate's Guide — KM-it-ops</title>
   <meta name="description" content="Privacy-first desktop job hunt cockpit. Local vault, Copy in app — you Send on the portal." />
+  <link rel="canonical" href="https://km-it-ops.github.io/graduates-guide-desktop/landing/" />
   <meta property="og:title" content="The Graduate's Guide" />
-  <meta property="og:description" content="Your job search lives in a folder you own." />
-  <meta property="og:image" content="assets/social-card.png" />
+  <meta property="og:description" content="Your job search lives in a folder you own. Copy in app — Send on the portal." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/" />
+  <meta property="og:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card.png" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:type" content="image/png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="assets/social-card.png" />
+  <meta name="twitter:title" content="The Graduate's Guide" />
+  <meta name="twitter:description" content="Privacy-first desktop job hunt cockpit. Local vault, Copy in app — you Send on the portal." />
+  <meta name="twitter:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card.png" />
   <link rel="icon" href="../app-icon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "The Graduate's Guide",
+    "operatingSystem": "Windows, macOS, Linux",
+    "applicationCategory": "ProductivityApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "url": "https://km-it-ops.github.io/graduates-guide-desktop/landing/",
+    "downloadUrl": "https://github.com/KM-it-ops/graduates-guide-desktop/releases",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": { "@type": "Organization", "name": "KM-it-ops", "url": "https://github.com/KM-it-ops" }
+  }
+  </script>
   <style>
     :root {
-      --void: #020617;
-      --panel: #0f172a;
+      --void: #0f172a;
+      --panel: #1e293b;
       --ink: #f8fafc;
       --muted: #94a3b8;
       --dim: #64748b;
-      --neon: #22d3ee;
-      --neon-hot: #67e8f9;
-      --electric: #3b82f6;
-      --pulse: #2dd4bf;
-      --font: 'IBM Plex Sans', system-ui, sans-serif;
-      --display: 'Orbitron', system-ui, sans-serif;
-      --mono: 'IBM Plex Mono', Consolas, monospace;
-      --max: 1180px;
+      --accent: #22d3ee;
+      --accent-soft: #67e8f9;
+      --primary: #1d4ed8;
+      --teal: #0f766e;
+      --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Consolas, monospace;
+      --max: 1120px;
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
-      --glow: 0 0 24px rgba(34, 211, 238, 0.5), 0 0 60px rgba(34, 211, 238, 0.15);
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
@@ -44,20 +62,35 @@
       font-family: var(--font);
       background: var(--void);
       color: var(--ink);
-      line-height: 1.55;
+      line-height: 1.6;
       overflow-x: hidden;
       padding-bottom: var(--safe-bottom);
     }
 
-    a { color: var(--neon); text-decoration: none; }
-    a:hover { color: var(--neon-hot); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-soft); }
 
-    #particles {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.55;
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 1000;
+      padding: 0.75rem 1rem;
+      background: var(--accent);
+      color: var(--void);
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      left: 0.75rem;
+      top: calc(0.75rem + var(--safe-top));
     }
 
     .bg {
@@ -66,44 +99,13 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(ellipse 90% 60% at 50% -20%, rgba(59, 130, 246, 0.22), transparent 55%),
-        radial-gradient(ellipse 50% 40% at 100% 30%, rgba(45, 212, 191, 0.14), transparent 50%),
-        linear-gradient(180deg, #020617, #0a0f1e 50%, #020617);
-    }
-
-    .grid-floor {
-      position: fixed;
-      left: -60%;
-      right: -60%;
-      bottom: -35%;
-      height: 65vh;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        linear-gradient(rgba(34, 211, 238, 0.09) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(34, 211, 238, 0.09) 1px, transparent 1px);
-      background-size: 40px 40px;
-      transform: perspective(480px) rotateX(70deg);
-      mask-image: linear-gradient(to top, black 15%, transparent 80%);
-      animation: grid-move 22s linear infinite;
-    }
-
-    @keyframes grid-move {
-      to { background-position: 0 40px, 40px 0; }
-    }
-
-    .scanlines {
-      position: fixed;
-      inset: 0;
-      z-index: 9998;
-      pointer-events: none;
-      opacity: 0.035;
-      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.5) 2px, rgba(0,0,0,0.5) 4px);
+        radial-gradient(ellipse 80% 55% at 20% -10%, rgba(29, 78, 216, 0.18), transparent 55%),
+        radial-gradient(ellipse 60% 45% at 85% 20%, rgba(15, 118, 110, 0.12), transparent 50%),
+        linear-gradient(180deg, #0f172a, #111827 55%, #0f172a);
     }
 
     .shell { position: relative; z-index: 1; }
 
-    /* ── NAV ── */
     .topbar {
       position: fixed;
       top: 0;
@@ -115,10 +117,8 @@
       justify-content: space-between;
       gap: 1rem;
       padding: calc(0.75rem + var(--safe-top)) 1rem 0.75rem;
-      background: rgba(2, 6, 23, 0.8);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(34, 211, 238, 0.12);
+      background: rgba(15, 23, 42, 0.92);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
     }
 
     @media (min-width: 640px) {
@@ -130,54 +130,50 @@
       align-items: center;
       gap: 0.65rem;
       min-width: 0;
-      font-family: var(--display);
+      font-family: var(--mono);
       font-weight: 700;
-      font-size: clamp(0.65rem, 2.5vw, 0.82rem);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      font-size: clamp(0.75rem, 2.5vw, 0.88rem);
+      letter-spacing: 0.04em;
     }
 
     .brand img {
       width: 36px;
       height: 36px;
       flex-shrink: 0;
-      border-radius: 10px;
-      box-shadow: var(--glow);
+      border-radius: 8px;
     }
 
     @media (min-width: 640px) {
-      .brand img { width: 42px; height: 42px; }
+      .brand img { width: 40px; height: 40px; }
     }
 
     .brand small {
       display: block;
-      font-family: var(--mono);
-      font-size: 0.55rem;
-      color: var(--neon);
-      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
     .topbar a.gh {
       flex-shrink: 0;
       font-family: var(--mono);
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       color: var(--ink);
       padding: 0.5rem 0.85rem;
       min-height: 44px;
       display: inline-flex;
       align-items: center;
-      border: 1px solid rgba(34, 211, 238, 0.35);
-      border-radius: 4px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      border-radius: 6px;
     }
 
-    @media (min-width: 640px) {
-      .topbar a.gh { font-size: 0.75rem; padding: 0.55rem 1.15rem; }
+    .topbar a.gh:hover {
+      border-color: var(--accent);
+      color: var(--accent-soft);
     }
 
-    /* ── HERO ── */
     .hero-wrap {
       min-height: 100svh;
       display: flex;
@@ -186,7 +182,7 @@
     }
 
     @media (min-width: 960px) {
-      .hero-wrap { padding: calc(6.5rem + var(--safe-top)) 1.5rem 4rem; }
+      .hero-wrap { padding: calc(6rem + var(--safe-top)) 1.5rem 4rem; }
     }
 
     .hero {
@@ -208,56 +204,46 @@
       align-items: center;
       gap: 0.5rem;
       font-family: var(--mono);
-      font-size: 0.65rem;
+      font-size: clamp(0.75rem, 2vw, 0.82rem);
       font-weight: 600;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--neon);
+      color: var(--accent);
       margin-bottom: 1.25rem;
-      padding: 0.4rem 0.85rem;
-      border: 1px solid rgba(34, 211, 238, 0.3);
+      padding: 0.45rem 0.9rem;
+      border: 1px solid rgba(34, 211, 238, 0.25);
       background: rgba(34, 211, 238, 0.06);
-    }
-
-    @media (min-width: 640px) {
-      .hero-copy .tagline { font-size: 0.72rem; margin-bottom: 1.5rem; }
-    }
-
-    .pulse-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--neon);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--neon);
-      animation: pulse-dot 1.4s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.8); }
+      border-radius: 4px;
     }
 
     .hero-copy h1 {
-      font-family: var(--display);
-      font-size: clamp(1.75rem, 7vw, 3.6rem);
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+      font-family: var(--mono);
+      font-size: clamp(1.65rem, 5.5vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
       margin-bottom: 1rem;
       text-wrap: balance;
     }
 
-    .hero-copy h1 .glow {
-      color: var(--neon-hot);
-      text-shadow: 0 0 20px rgba(103, 232, 249, 0.65), 0 0 50px rgba(34, 211, 238, 0.3);
+    .hero-copy h1 .accent {
+      color: var(--accent-soft);
     }
 
     .hero-copy .lede {
-      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      font-size: clamp(1rem, 2.5vw, 1.12rem);
       color: var(--muted);
       max-width: 34rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-copy .why {
+      font-size: 0.92rem;
+      color: var(--dim);
+      max-width: 34rem;
       margin-bottom: 1.75rem;
+      padding-left: 0.85rem;
+      border-left: 3px solid var(--teal);
     }
 
     .cta-row {
@@ -271,21 +257,21 @@
     }
 
     .cta {
-      font-family: var(--display);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       text-align: center;
-      color: #020617;
-      padding: 1rem 1.5rem;
+      color: var(--void);
+      padding: 0.95rem 1.35rem;
       min-height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, var(--neon-hot), var(--neon));
-      box-shadow: var(--glow);
-      transition: transform 0.25s var(--ease), box-shadow 0.25s;
+      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+      border-radius: 6px;
+      transition: transform 0.2s var(--ease), box-shadow 0.2s;
       -webkit-tap-highlight-color: transparent;
     }
 
@@ -293,10 +279,10 @@
 
     @media (hover: hover) {
       .cta:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 40px rgba(34, 211, 238, 0.55);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(34, 211, 238, 0.25);
         text-decoration: none;
-        color: #020617;
+        color: var(--void);
       }
     }
 
@@ -306,92 +292,67 @@
       font-weight: 600;
       color: var(--muted);
       text-align: center;
-      padding: 0.5rem;
+      padding: 0.5rem 0.75rem;
       min-height: 44px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      border-radius: 6px;
     }
 
-    /* holo hero */
-    .holo-wrap { position: relative; max-width: 640px; margin: 0 auto; width: 100%; }
+    .cta-secondary:hover { color: var(--accent-soft); }
+
+    .hero-shot {
+      position: relative;
+      max-width: 640px;
+      margin: 0 auto;
+      width: 100%;
+    }
 
     @media (min-width: 960px) {
-      .holo-wrap { margin: 0; max-width: none; }
+      .hero-shot { margin: 0; max-width: none; }
     }
 
-    .orbit {
-      position: absolute;
-      inset: -8%;
-      border: 1px solid rgba(34, 211, 238, 0.12);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: orbit 20s linear infinite;
+    .shot-frame {
+      padding: 1px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.5), rgba(29, 78, 216, 0.35));
+      box-shadow: 0 8px 32px rgba(15, 23, 42, 0.5);
     }
 
-    .orbit:nth-child(2) {
-      inset: -4%;
-      border-color: rgba(59, 130, 246, 0.1);
-      animation-direction: reverse;
-      animation-duration: 14s;
-    }
-
-    @keyframes orbit {
-      to { transform: rotate(360deg); }
-    }
-
-    .holo-card {
-      position: relative;
-      padding: 2px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--neon), var(--electric), var(--pulse), var(--neon));
-      background-size: 300% 300%;
-      animation: holo 5s ease infinite;
-      box-shadow: var(--glow);
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    @keyframes holo {
-      50% { background-position: 100% 50%; }
-    }
-
-    .holo-card img {
+    .shot-frame img {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 14px;
+      border-radius: 11px;
       background: var(--panel);
     }
 
     .hero-caption {
       font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: var(--muted);
       margin-top: 0.75rem;
       text-align: center;
     }
 
-    /* manifest */
     .manifest {
       max-width: var(--max);
-      margin: -1.25rem auto 0;
+      margin: -1rem auto 0;
       padding: 0 1rem;
     }
 
-    @media (min-width: 960px) { .manifest { margin-top: -2rem; padding: 0 1.5rem; } }
+    @media (min-width: 960px) { .manifest { margin-top: -1.5rem; padding: 0 1.5rem; } }
 
     .manifest-inner {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       padding: 1.1rem 1.2rem;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(34, 211, 238, 0.2);
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 8px;
     }
 
     @media (min-width: 640px) {
@@ -404,112 +365,87 @@
       }
     }
 
-    .manifest p { font-size: 0.9rem; color: var(--muted); }
-    .manifest strong { color: var(--neon-hot); }
+    .manifest p { font-size: 0.92rem; color: var(--muted); }
+    .manifest strong { color: var(--accent-soft); }
 
     .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
     .pill {
       font-family: var(--mono);
-      font-size: 0.6rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       padding: 0.35rem 0.65rem;
-      border: 1px solid rgba(34, 211, 238, 0.3);
-      color: var(--neon);
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      color: var(--accent);
+      border-radius: 4px;
       white-space: nowrap;
     }
 
-    .pill.dim { border-color: rgba(148, 163, 184, 0.2); color: var(--dim); }
+    .pill.dim { border-color: rgba(148, 163, 184, 0.25); color: var(--muted); }
 
-    /* sections */
     .section {
       max-width: var(--max);
       margin: 0 auto;
       padding: 3.5rem 1rem;
     }
 
-    @media (min-width: 640px) { .section { padding: 4.5rem 1.5rem; } }
+    @media (min-width: 640px) { .section { padding: 4rem 1.5rem; } }
 
     .section-head { margin-bottom: 1.75rem; }
 
-    @media (min-width: 640px) { .section-head { margin-bottom: 2.25rem; } }
+    @media (min-width: 640px) { .section-head { margin-bottom: 2rem; } }
 
     .section-head h2 {
-      font-family: var(--display);
-      font-size: clamp(1.1rem, 4vw, 1.85rem);
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-family: var(--mono);
+      font-size: clamp(1.15rem, 3.5vw, 1.65rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
       margin-bottom: 0.5rem;
       text-wrap: balance;
     }
 
-    .section-head p { color: var(--dim); font-size: 0.92rem; max-width: 30rem; }
+    .section-head p { color: var(--muted); font-size: 0.95rem; max-width: 32rem; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-    }
-
-    .reveal.visible { opacity: 1; transform: none; }
-
-    /* cards */
-    .hex-grid {
+    .feature-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 0.85rem;
     }
 
     @media (min-width: 640px) {
-      .hex-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
 
-    .hex-card {
-      padding: 1.35rem 1.25rem;
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(34, 211, 238, 0.15);
-      transition: border-color 0.3s, box-shadow 0.3s;
+    @media (min-width: 960px) {
+      .feature-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .feature-card {
+      padding: 1.25rem 1.2rem;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-radius: 8px;
+      transition: border-color 0.2s;
     }
 
     @media (hover: hover) {
-      .hex-card:hover {
-        border-color: rgba(34, 211, 238, 0.4);
-        box-shadow: var(--glow);
-      }
+      .feature-card:hover { border-color: rgba(34, 211, 238, 0.35); }
     }
 
-    .hex-card.featured {
-      background: linear-gradient(160deg, rgba(34, 211, 238, 0.1), rgba(15, 23, 42, 0.85));
-      border-color: rgba(34, 211, 238, 0.28);
-    }
-
-    @media (min-width: 640px) {
-      .hex-card.featured { grid-row: span 1; }
-    }
-
-    .hex-icon {
-      font-size: 1.35rem;
-      color: var(--neon);
-      margin-bottom: 0.75rem;
-      text-shadow: var(--glow);
-    }
-
-    .hex-card h3 {
-      font-family: var(--display);
-      font-size: 0.72rem;
+    .feature-card h3 {
+      font-family: var(--mono);
+      font-size: 0.82rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--neon-hot);
+      color: var(--accent-soft);
       margin-bottom: 0.45rem;
     }
 
-    .hex-card p { font-size: 0.88rem; color: var(--muted); }
+    .feature-card p { font-size: 0.9rem; color: var(--muted); }
 
-    /* pipeline — stack on mobile */
     .pipeline {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -517,44 +453,40 @@
     }
 
     @media (min-width: 768px) {
-      .pipeline {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 0;
-      }
+      .pipeline { grid-template-columns: repeat(4, 1fr); gap: 0; }
     }
 
     .pipe-step { text-align: center; padding: 0 0.25rem; }
 
     .pipe-node {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       margin: 0 auto 0.75rem;
       display: grid;
       place-items: center;
       font-family: var(--mono);
-      font-size: 0.65rem;
-      font-weight: 600;
-      color: #020617;
-      background: linear-gradient(135deg, var(--neon-hot), var(--neon));
-      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-      box-shadow: var(--glow);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--void);
+      background: var(--accent);
+      border-radius: 50%;
     }
 
     .pipe-step h3 {
-      font-family: var(--display);
-      font-size: 0.65rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--neon);
+      color: var(--accent-soft);
       margin-bottom: 0.3rem;
     }
 
-    .pipe-step p { font-size: 0.78rem; color: var(--dim); line-height: 1.45; }
+    .pipe-step p { font-size: 0.82rem; color: var(--muted); line-height: 1.45; }
 
-    /* scope table — card rows on tiny screens */
     .scope-panel {
-      border: 1px solid rgba(34, 211, 238, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-radius: 8px;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
     }
@@ -563,42 +495,39 @@
       width: 100%;
       min-width: 280px;
       border-collapse: collapse;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .scope-table th,
     .scope-table td {
-      padding: 0.8rem 1rem;
+      padding: 0.85rem 1rem;
       text-align: left;
-      border-bottom: 1px solid rgba(34, 211, 238, 0.08);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
     }
 
     .scope-table th {
       font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--neon);
+      color: var(--accent);
       background: rgba(34, 211, 238, 0.06);
-      position: sticky;
-      top: 0;
     }
 
-    .scope-table tbody tr { background: rgba(15, 23, 42, 0.55); }
+    .scope-table tbody tr { background: rgba(30, 41, 59, 0.45); }
     .scope-table tr:last-child td { border-bottom: none; }
 
     .badge-shipped { color: #34d399; font-weight: 700; }
     .badge-stub { color: #fbbf24; font-weight: 700; }
-    .badge-never { color: var(--dim); }
+    .badge-never { color: var(--muted); font-weight: 600; }
 
-    /* privacy */
     .privacy-band {
       padding: 3.5rem 1rem;
-      border-top: 1px solid rgba(34, 211, 238, 0.1);
-      background: linear-gradient(180deg, rgba(34, 211, 238, 0.04), transparent);
+      border-top: 1px solid rgba(148, 163, 184, 0.12);
+      background: linear-gradient(180deg, rgba(15, 118, 110, 0.06), transparent);
     }
 
-    @media (min-width: 640px) { .privacy-band { padding: 4.5rem 1.5rem; } }
+    @media (min-width: 640px) { .privacy-band { padding: 4rem 1.5rem; } }
 
     .privacy-inner {
       max-width: var(--max);
@@ -609,32 +538,34 @@
     }
 
     @media (min-width: 768px) {
-      .privacy-inner { grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+      .privacy-inner { grid-template-columns: 1fr 1.1fr; gap: 2.5rem; align-items: start; }
     }
 
     .privacy-inner h2 {
-      font-family: var(--display);
-      font-size: clamp(1.05rem, 3.5vw, 1.65rem);
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      line-height: 1.25;
+      font-family: var(--mono);
+      font-size: clamp(1.1rem, 3.5vw, 1.55rem);
+      font-weight: 700;
+      line-height: 1.3;
       text-wrap: balance;
     }
 
-    .privacy-inner h2 span {
-      color: var(--neon-hot);
-      text-shadow: 0 0 20px rgba(103, 232, 249, 0.45);
+    .privacy-inner h2 span { color: var(--accent-soft); }
+
+    .privacy-lede {
+      margin-top: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 28rem;
     }
 
-    .privacy-list { list-style: none; display: grid; gap: 0.6rem; }
+    .privacy-list { list-style: none; display: grid; gap: 0.55rem; }
 
     .privacy-list li {
-      font-family: var(--mono);
-      font-size: 0.78rem;
-      padding: 0.85rem 1rem;
-      border: 1px solid rgba(34, 211, 238, 0.12);
-      background: rgba(15, 23, 42, 0.55);
+      font-size: 0.88rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      background: rgba(30, 41, 59, 0.55);
+      border-radius: 6px;
       color: var(--muted);
     }
 
@@ -642,252 +573,182 @@
       padding: 2rem 1rem calc(2.5rem + var(--safe-bottom));
       text-align: center;
       font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--dim);
     }
 
     footer .publisher {
-      font-family: var(--display);
-      font-size: 0.75rem;
       font-weight: 700;
-      color: var(--neon);
-    }
-
-    /* mobile perf: kill heavy layers */
-    @media (max-width: 767px) {
-      #particles { display: none; }
-      .grid-floor { opacity: 0.5; animation: none; }
-      .orbit { display: none; }
-      .holo-card { animation: none; background: linear-gradient(135deg, var(--neon), var(--electric)); }
-      .scanlines { display: none; }
+      color: var(--accent);
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .grid-floor, .orbit, .holo-card, .pulse-dot { animation: none !important; }
-      .reveal { opacity: 1; transform: none; }
-      #particles { display: none; }
+      .cta { transition: none; }
     }
   </style>
 </head>
 <body>
-  <canvas id="particles" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="bg" aria-hidden="true"></div>
-  <div class="grid-floor" aria-hidden="true"></div>
-  <div class="scanlines" aria-hidden="true"></div>
 
   <div class="shell">
     <header class="topbar">
       <div class="brand">
-        <img src="../app-icon.svg" alt="" width="42" height="42" />
+        <img src="../app-icon.svg" alt="" width="40" height="40" />
         <div>
           <small>KM-it-ops</small>
           Graduate's Guide
         </div>
       </div>
-      <a class="gh" href="https://github.com/KM-it-ops/graduates-guide-desktop">GitHub</a>
+      <a class="gh" href="https://github.com/KM-it-ops/graduates-guide-desktop" rel="noopener noreferrer">GitHub</a>
     </header>
 
-    <div class="hero-wrap">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="tagline"><span class="pulse-dot"></span> Phase 1 · Local vault · No auto-apply</p>
-          <h1>Your job search lives in a <span class="glow">folder you own</span>.</h1>
-          <p class="lede">
-            Daily missions. Ranked queue. Paste-ready scripts.
-            Copy in the app — Send on the portal. No cloud lock-in. No bot.
-          </p>
-          <div class="cta-row">
-            <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases">Download ↵</a>
-            <a class="cta-secondary" href="https://github.com/KM-it-ops/graduates-guide-desktop#develop">Build from source →</a>
+    <main id="main-content">
+      <div class="hero-wrap">
+        <section class="hero" aria-labelledby="hero-heading">
+          <div class="hero-copy">
+            <p class="tagline">Phase 1 · Local vault · No auto-apply</p>
+            <h1 id="hero-heading">Your job search lives in a <span class="accent">folder you own</span>.</h1>
+            <p class="lede">
+              Daily missions. Ranked queue. Paste-ready scripts.
+              Copy in the app — Send on the portal. No cloud lock-in. No bot.
+            </p>
+            <p class="why">
+              Your data never routes through our servers. The app reads your vault on disk and puts words on your clipboard — you choose where they go.
+            </p>
+            <div class="cta-row">
+              <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases" rel="noopener noreferrer">Download · macOS / Windows / Linux</a>
+              <a class="cta-secondary" href="https://github.com/KM-it-ops/graduates-guide-desktop#develop" rel="noopener noreferrer">Build from source</a>
+            </div>
+          </div>
+          <figure class="hero-shot">
+            <div class="shot-frame">
+              <img src="assets/readme-hero.png" alt="Today screen with sanitized fixture data — five missions and one priority task" width="720" height="480" loading="eager" decoding="async" />
+            </div>
+            <figcaption class="hero-caption">App screenshot — sanitized fixture data</figcaption>
+          </figure>
+        </section>
+      </div>
+
+      <div class="manifest">
+        <div class="manifest-inner">
+          <p><strong>Copy in the app.</strong> You Send in your mail client or job portal.</p>
+          <div class="pills">
+            <span class="pill">No auto-apply</span>
+            <span class="pill">No telemetry</span>
+            <span class="pill dim">MIT</span>
           </div>
         </div>
-        <div class="holo-wrap" id="holoWrap">
-          <div class="orbit" aria-hidden="true"></div>
-          <div class="orbit" aria-hidden="true"></div>
-          <div class="holo-card" id="holoCard">
-            <img src="assets/readme-hero.png" alt="Today screen illustration with sanitized fixture data" width="720" height="450" loading="eager" decoding="async" />
-          </div>
-          <p class="hero-caption">SYS:// illustration · sanitized fixture · not live capture</p>
+      </div>
+
+      <section class="section" aria-labelledby="features-heading">
+        <div class="section-head">
+          <h2 id="features-heading">Phase 1 features</h2>
+          <p>Shipped today in the desktop app. Everything else stays in your vault on disk.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Today</h3>
+            <p>One priority. Five missions max. Open script, check off, move on.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Queue</h3>
+            <p>Ranked applications from your vault — see what matters next.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Script reader</h3>
+            <p>Paste-ready blocks with <strong>Copy</strong> — letters, outreach, prep.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Follow-ups</h3>
+            <p>Track who needs a nudge without leaving your local files.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Apply assist</h3>
+            <p>Portal and script side by side — copy, paste, submit yourself.</p>
+          </article>
+          <article class="feature-card">
+            <h3>Local vault</h3>
+            <p>Markdown on your disk. Zip, encrypt, sync. Your CV stays local.</p>
+          </article>
         </div>
       </section>
-    </div>
 
-    <div class="manifest">
-      <div class="manifest-inner">
-        <p><strong>Copy in the app.</strong> You Send in your mail client or job portal.</p>
-        <div class="pills">
-          <span class="pill">No auto-apply</span>
-          <span class="pill">No telemetry</span>
-          <span class="pill dim">MIT</span>
+      <section class="section" style="padding-top:0" aria-labelledby="how-heading">
+        <div class="section-head">
+          <h2 id="how-heading">How it works</h2>
+          <p>You drive every send and submit.</p>
         </div>
-      </div>
-    </div>
+        <div class="pipeline">
+          <div class="pipe-step">
+            <div class="pipe-node" aria-hidden="true">1</div>
+            <h3>Import</h3>
+            <p>Point at your folder.</p>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-node" aria-hidden="true">2</div>
+            <h3>Today</h3>
+            <p>Ranked missions.</p>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-node" aria-hidden="true">3</div>
+            <h3>Copy</h3>
+            <p>Clipboard ready.</p>
+          </div>
+          <div class="pipe-step">
+            <div class="pipe-node" aria-hidden="true">4</div>
+            <h3>Submit</h3>
+            <p>You on the portal.</p>
+          </div>
+        </div>
+      </section>
 
-    <section class="section reveal">
-      <div class="section-head">
-        <h2>Core modules</h2>
-        <p>Three systems online today. Everything else stays in your vault on disk.</p>
-      </div>
-      <div class="hex-grid">
-        <article class="hex-card featured">
-          <div class="hex-icon">◎</div>
-          <h3>Today view</h3>
-          <p>One priority. Five missions max. Open script, check off, move on.</p>
-        </article>
-        <article class="hex-card">
-          <div class="hex-icon">⎘</div>
-          <h3>Script reader</h3>
-          <p>Paste-ready blocks with <strong>Copy</strong> — letters, outreach, prep.</p>
-        </article>
-        <article class="hex-card">
-          <div class="hex-icon">⌂</div>
-          <h3>Local vault</h3>
-          <p>Markdown on your disk. Zip, encrypt, sync. Your CV stays local.</p>
-        </article>
-      </div>
-    </section>
+      <section class="section" style="padding-top:0" aria-labelledby="scope-heading">
+        <div class="section-head">
+          <h2 id="scope-heading">Phase 1 scope</h2>
+          <p>Shipped vs roadmap — honest about what is and is not built.</p>
+        </div>
+        <div class="scope-panel">
+          <table class="scope-table">
+            <thead>
+              <tr><th scope="col">Feature</th><th scope="col">Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Import local vault</td><td class="badge-shipped">Shipped</td></tr>
+              <tr><td>Today missions</td><td class="badge-shipped">Shipped</td></tr>
+              <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped">Shipped</td></tr>
+              <tr><td>Script reader + Copy</td><td class="badge-shipped">Shipped</td></tr>
+              <tr><td>Apply assist</td><td class="badge-shipped">Shipped</td></tr>
+              <tr><td>Evaluate / Generate</td><td class="badge-stub">Stub — use CLI</td></tr>
+              <tr><td>In-app Send / auto-apply</td><td class="badge-never">Not offered (by design)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-    <section class="section reveal" style="padding-top:0">
-      <div class="section-head">
-        <h2>Execution pipeline</h2>
-        <p>You drive every send and submit.</p>
-      </div>
-      <div class="pipeline">
-        <div class="pipe-step">
-          <div class="pipe-node">01</div>
-          <h3>Import</h3>
-          <p>Point at your folder.</p>
+      <section class="privacy-band" aria-labelledby="privacy-heading">
+        <div class="privacy-inner">
+          <div>
+            <h2 id="privacy-heading">Privacy isn't a toggle. It's <span>the architecture</span>.</h2>
+            <p class="privacy-lede">No account. No hosted CV. Your folder, your machine, your sends.</p>
+          </div>
+          <ul class="privacy-list">
+            <li>No account required</li>
+            <li>Vault stays on your machine — you pick the folder</li>
+            <li>No telemetry — crash reports are opt-in</li>
+            <li>API keys stored in OS keychain only</li>
+            <li>CI uses synthetic fixtures, never real vault data</li>
+          </ul>
         </div>
-        <div class="pipe-step">
-          <div class="pipe-node">02</div>
-          <h3>Today</h3>
-          <p>Ranked missions.</p>
-        </div>
-        <div class="pipe-step">
-          <div class="pipe-node">03</div>
-          <h3>Copy</h3>
-          <p>Clipboard ready.</p>
-        </div>
-        <div class="pipe-step">
-          <div class="pipe-node">04</div>
-          <h3>Submit</h3>
-          <p>You on the portal.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section reveal" style="padding-top:0">
-      <div class="section-head">
-        <h2>Phase 1 scope</h2>
-        <p>Shipped vs roadmap.</p>
-      </div>
-      <div class="scope-panel">
-        <table class="scope-table">
-          <thead>
-            <tr><th>Feature</th><th>Status</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Import local vault</td><td class="badge-shipped">ONLINE</td></tr>
-            <tr><td>Today missions</td><td class="badge-shipped">ONLINE</td></tr>
-            <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped">ONLINE</td></tr>
-            <tr><td>Script reader + Copy</td><td class="badge-shipped">ONLINE</td></tr>
-            <tr><td>Apply assist</td><td class="badge-shipped">ONLINE</td></tr>
-            <tr><td>Evaluate / Generate</td><td class="badge-stub">STUB — CLI</td></tr>
-            <tr><td>In-app Send</td><td class="badge-never">DISABLED</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="privacy-band reveal">
-      <div class="privacy-inner">
-        <h2>Privacy isn't a toggle. It's <span>the architecture</span>.</h2>
-        <ul class="privacy-list">
-          <li>// No telemetry — crash reports opt-in</li>
-          <li>// API keys in OS keychain only</li>
-          <li>// CI uses synthetic fixtures</li>
-        </ul>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <footer>
-      <p><span class="publisher">The Graduate's Guide</span> · KM-it-ops · MIT</p>
+      <p><span class="publisher">The Graduate's Guide</span> · KM-it-ops · MIT · Tauri desktop</p>
     </footer>
   </div>
-
-  <script>
-    (function () {
-      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const mobile = window.matchMedia('(max-width: 767px)').matches;
-
-      /* scroll reveal */
-      if (!reduced) {
-        const io = new IntersectionObserver(
-          (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-          { threshold: 0.08, rootMargin: '0px 0px -24px 0px' },
-        );
-        document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
-      } else {
-        document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
-      }
-
-      /* holo tilt — desktop only */
-      const holoCard = document.getElementById('holoCard');
-      const holoWrap = document.getElementById('holoWrap');
-      if (holoCard && holoWrap && !reduced && !mobile && window.matchMedia('(hover: hover)').matches) {
-        holoWrap.addEventListener('mousemove', (e) => {
-          const r = holoWrap.getBoundingClientRect();
-          const x = (e.clientX - r.left) / r.width - 0.5;
-          const y = (e.clientY - r.top) / r.height - 0.5;
-          holoCard.style.transform = 'rotateY(' + (x * 14) + 'deg) rotateX(' + (-y * 14) + 'deg)';
-        });
-        holoWrap.addEventListener('mouseleave', () => {
-          holoCard.style.transform = '';
-        });
-      }
-
-      /* lightweight particles — desktop only */
-      if (reduced || mobile) return;
-      const canvas = document.getElementById('particles');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let w, h, pts;
-      const N = 48;
-
-      function resize() {
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-        pts = Array.from({ length: N }, () => ({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
-          r: Math.random() * 1.2 + 0.4,
-        }));
-      }
-
-      function tick() {
-        ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = 'rgba(103, 232, 249, 0.55)';
-        for (const p of pts) {
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0 || p.x > w) p.vx *= -1;
-          if (p.y < 0 || p.y > h) p.vy *= -1;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fill();
-        }
-        requestAnimationFrame(tick);
-      }
-
-      resize();
-      tick();
-      window.addEventListener('resize', resize, { passive: true });
-    })();
-  </script>
 </body>
 </html>

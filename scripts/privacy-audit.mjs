@@ -32,5 +32,20 @@ if (/sentry|analytics|segment|mixpanel/i.test(pkg)) {
   failed = true;
 }
 
+const landingPath = join(root, 'landing', 'index.html');
+if (existsSync(landingPath)) {
+  const landing = readFileSync(landingPath, 'utf-8');
+  const blockedHosts =
+    /fonts\.googleapis\.com|fonts\.gstatic\.com|google-analytics\.com|googletagmanager\.com|cdn\.jsdelivr\.net|unpkg\.com|cdnjs\.cloudflare\.com/i;
+  if (blockedHosts.test(landing)) {
+    console.error('FAIL: landing page loads blocked third-party CDN/analytics hosts');
+    failed = true;
+  }
+  if (!/<meta[^>]+Content-Security-Policy/i.test(landing)) {
+    console.error('FAIL: landing page missing Content-Security-Policy meta tag');
+    failed = true;
+  }
+}
+
 if (failed) process.exit(1);
-console.log('Privacy audit passed (Phase 1: no network, no telemetry deps)');
+console.log('Privacy audit passed (Phase 1: no network, no telemetry deps, landing self-contained)');

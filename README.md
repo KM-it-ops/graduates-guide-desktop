@@ -14,7 +14,7 @@ Privacy-first **Tauri** desktop by **[KM-it-ops](https://github.com/KM-it-ops)**
 [![Releases](https://img.shields.io/github/v/release/KM-it-ops/graduates-guide-desktop?label=release&color=2563eb)](https://github.com/KM-it-ops/graduates-guide-desktop/releases)
 [![License](https://img.shields.io/github/license/KM-it-ops/graduates-guide-desktop)](LICENSE)
 [![Tauri](https://img.shields.io/badge/stack-Tauri-24C8DB)](https://tauri.app/)
-[![No auto-apply](https://img.shields.io/badge/auto--apply-none-0f766e)](landing/index.html)
+[![No auto-apply](https://img.shields.io/badge/auto--apply-none-0f766e)](https://km-it-ops.github.io/graduates-guide-desktop/landing/)
 
 <img src="docs/assets/readme-hero.png" alt="Today screen layout illustration (sanitized fixture data)" width="720" />
 
@@ -22,7 +22,7 @@ Privacy-first **Tauri** desktop by **[KM-it-ops](https://github.com/KM-it-ops)**
 
 <br /><br />
 
-[**Download**](https://github.com/KM-it-ops/graduates-guide-desktop/releases) · [**Landing page**](landing/index.html) · [**Develop**](#develop)
+[**Download**](https://github.com/KM-it-ops/graduates-guide-desktop/releases) · [**Landing page**](https://km-it-ops.github.io/graduates-guide-desktop/landing/) · [**Develop**](#develop)
 
 </div>
 
