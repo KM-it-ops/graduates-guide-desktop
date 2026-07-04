@@ -51,10 +51,10 @@
       --ink: #f8fafc;
       --muted: #94a3b8;
       --dim: #94a3b8;
-      --accent: #22d3ee;
-      --accent-soft: #67e8f9;
+      --brand: #22d3ee;
+      --brand-soft: #67e8f9;
       --primary: #1d4ed8;
-      --teal: #0f766e;
+      --accent: #0f766e;
       --font: system-ui, -apple-system, 'Segoe UI', sans-serif;
       --mono: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', Consolas, monospace;
       --max: 1120px;
@@ -65,7 +65,11 @@
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; }
 
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(5rem + var(--safe-top));
+      -webkit-text-size-adjust: 100%;
+    }
 
     body {
       font-family: var(--font);
@@ -76,12 +80,12 @@
       padding-bottom: var(--safe-bottom);
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-soft); }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { color: var(--brand-soft); }
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--brand);
       outline-offset: 3px;
       border-radius: 2px;
     }
@@ -92,7 +96,7 @@
       top: 0;
       z-index: 1000;
       padding: 0.75rem 1rem;
-      background: var(--accent);
+      background: var(--brand);
       color: var(--void);
       font-weight: 700;
     }
@@ -163,7 +167,7 @@
     .brand small {
       display: block;
       font-size: 0.7rem;
-      color: var(--accent);
+      color: var(--brand);
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
@@ -183,8 +187,8 @@
     }
 
     .topbar a.gh:hover {
-      border-color: var(--accent);
-      color: var(--accent-soft);
+      border-color: var(--brand);
+      color: var(--brand-soft);
     }
 
     .hero-wrap {
@@ -222,7 +226,7 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--brand);
       margin-bottom: 1.25rem;
       padding: 0.45rem 0.9rem;
       border: 1px solid rgba(34, 211, 238, 0.25);
@@ -240,8 +244,8 @@
       text-wrap: balance;
     }
 
-    .hero-copy h1 .accent {
-      color: var(--accent-soft);
+    .hero-copy h1 .brand-highlight {
+      color: var(--brand-soft);
     }
 
     .hero-copy .lede {
@@ -257,7 +261,7 @@
       max-width: 34rem;
       margin-bottom: 1.75rem;
       padding-left: 0.85rem;
-      border-left: 3px solid var(--teal);
+      border-left: 3px solid var(--accent);
     }
 
     .cta-row {
@@ -286,7 +290,7 @@
       justify-content: center;
       gap: 0.15rem;
       line-height: 1.2;
-      background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+      background: linear-gradient(135deg, var(--brand-soft), var(--brand));
       border-radius: 6px;
       transition: transform 0.2s var(--ease), box-shadow 0.2s;
       -webkit-tap-highlight-color: transparent;
@@ -319,7 +323,7 @@
       text-underline-offset: 3px;
     }
 
-    .download-links a:hover { color: var(--accent-soft); }
+    .download-links a:hover { color: var(--brand-soft); }
 
     .cta:active { transform: scale(0.98); }
 
@@ -344,9 +348,11 @@
       align-items: center;
       justify-content: center;
       border-radius: 6px;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    .cta-secondary:hover { color: var(--accent-soft); }
+    .cta-secondary:hover { color: var(--brand-soft); }
 
     .hero-shot {
       position: relative;
@@ -412,7 +418,7 @@
     }
 
     .manifest p { font-size: 0.92rem; color: var(--muted); }
-    .manifest strong { color: var(--accent-soft); }
+    .manifest strong { color: var(--brand-soft); }
 
     .pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
@@ -424,7 +430,7 @@
       text-transform: uppercase;
       padding: 0.35rem 0.65rem;
       border: 1px solid rgba(34, 211, 238, 0.25);
-      color: var(--accent);
+      color: var(--brand);
       border-radius: 4px;
       white-space: nowrap;
     }
@@ -494,7 +500,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--accent-soft);
+      color: var(--brand-soft);
       margin-bottom: 0.45rem;
     }
 
@@ -525,7 +531,7 @@
       font-size: 0.72rem;
       font-weight: 700;
       color: var(--void);
-      background: var(--accent);
+      background: var(--brand);
       border-radius: 50%;
     }
 
@@ -535,7 +541,7 @@
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--accent-soft);
+      color: var(--brand-soft);
       margin-bottom: 0.3rem;
     }
 
@@ -548,7 +554,7 @@
     }
 
     .scope-panel:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--brand);
       outline-offset: 2px;
     }
 
@@ -583,13 +589,13 @@
       font-size: 0.72rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--brand);
       background: rgba(34, 211, 238, 0.06);
     }
 
     .scope-table tbody tr { background: rgba(30, 41, 59, 0.45); }
     .scope-table tr:last-child td { border-bottom: none; }
-    .scope-table a { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 2px; }
+    .scope-table a { color: var(--brand-soft); text-decoration: underline; text-underline-offset: 2px; }
 
     .badge-shipped { color: #34d399; font-weight: 700; }
     .badge-stub { color: #fbbf24; font-weight: 700; }
@@ -623,7 +629,7 @@
       text-wrap: balance;
     }
 
-    .privacy-inner h2 span { color: var(--accent-soft); }
+    .privacy-inner h2 span { color: var(--brand-soft); }
 
     .privacy-lede {
       margin-top: 0.75rem;
@@ -655,8 +661,27 @@
 
     footer .publisher {
       font-weight: 700;
-      color: var(--accent);
+      color: var(--brand);
     }
+
+    .footer-cta {
+      margin-top: 1rem;
+      text-transform: none;
+      letter-spacing: normal;
+    }
+
+    .footer-cta a {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--brand-soft);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .footer-cta a:hover { color: var(--brand); }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -714,7 +739,7 @@
               Phase 1 · Local vault · No auto-apply
               <span class="pill tauri-pill">Tauri 2</span>
             </p>
-            <h1 id="hero-heading">Your job search lives in a <span class="accent">folder you own</span>.</h1>
+            <h1 id="hero-heading">Your job search lives in a <span class="brand-highlight">folder you own</span>.</h1>
             <p class="lede">
               Daily missions. Ranked queue. Paste-ready scripts.
               Copy in the app — Send on the portal or in your mail client. No cloud lock-in. No bot.
@@ -739,7 +764,7 @@
           </div>
           <figure class="hero-shot">
             <div class="shot-frame">
-              <img src="assets/readme-hero.png" alt="Today screen layout illustration with sanitized fixture data — sidebar, ethical banner, missions, and Copy-not-Send messaging" width="960" height="600" loading="eager" fetchpriority="high" decoding="sync" />
+              <img src="assets/readme-hero.png" alt="Today screen layout illustration with sanitized fixture data — sidebar, ethical banner, missions, and Copy-not-Send messaging" width="960" height="600" loading="lazy" decoding="async" />
             </div>
             <figcaption class="hero-caption">Layout illustration — sanitized fixture data, not a live capture</figcaption>
           </figure>
@@ -752,6 +777,7 @@
           <div class="pills">
             <span class="pill">No auto-apply</span>
             <span class="pill">No telemetry (Phase 1)</span>
+            <span class="pill dim">Evaluate / Generate: CLI preview</span>
             <span class="pill dim">MIT</span>
           </div>
         </div>
@@ -824,7 +850,7 @@
           <h2 id="scope-heading">Phase 1 scope</h2>
           <p>Shipped vs roadmap — honest about what is and is not built.</p>
         </div>
-        <div class="scope-panel" role="region" aria-label="Phase 1 scope table (scroll horizontally on small screens)">
+        <div class="scope-panel" role="region" tabindex="0" aria-label="Phase 1 scope table (scroll horizontally on small screens)">
           <table class="scope-table">
             <caption class="visually-hidden">Phase 1 feature scope and shipping status</caption>
             <thead>
@@ -836,7 +862,7 @@
               <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
               <tr><td>Script reader + Copy</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
               <tr><td>Apply assist</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
-              <tr><td>Evaluate / Generate in-app</td><td class="badge-stub"><span class="visually-hidden">Status: </span>Stub — <a href="https://github.com/KM-it-ops/graduates-guide-desktop#develop" target="_blank" rel="noopener noreferrer">use engine CLI</a></td></tr>
+              <tr><td>Evaluate / Generate in-app</td><td class="badge-stub"><span class="visually-hidden">Status: </span>Preview — <a href="https://github.com/KM-it-ops/graduates-guide-desktop/blob/main/docs/migrate-from-cli.md" target="_blank" rel="noopener noreferrer">use engine CLI</a></td></tr>
               <tr><td>In-app Send / auto-apply</td><td class="badge-never"><span class="visually-hidden">Status: </span>Not offered (by design)</td></tr>
             </tbody>
           </table>
@@ -856,6 +882,7 @@
             <li>API keys — OS keychain only</li>
             <li>Crash reports — preference saved locally; no reporter shipped yet</li>
             <li>Hosted CV — never; vault stays on your machine</li>
+            <li>Job portals &amp; mail — you open them; pasted text leaves the app when you submit</li>
             <li>CI / fixtures — synthetic only, never real vault data</li>
           </ul>
         </div>
@@ -864,6 +891,9 @@
 
     <footer>
       <p><span class="publisher">The Graduate's Guide</span> · KM-it-ops · MIT · Tauri desktop</p>
+      <p class="footer-cta">
+        <a href="https://github.com/KM-it-ops/graduates-guide-desktop/releases/latest" target="_blank" rel="noopener noreferrer" aria-label="Download v0.1.0 for macOS and Windows (opens in new tab)">Download v0.1.0 · macOS · Windows</a>
+      </p>
     </footer>
   </div>
 </body>

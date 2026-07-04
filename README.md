@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="landing/assets/social-card-og.png" />
-  <img src="landing/assets/social-card-og.png" alt="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" width="100%" />
+  <img src="landing/assets/social-card-og.png" alt="The Graduate's Guide — Copy in the app. Send on the portal or in your mail client. Privacy-first desktop cockpit by KM-it-ops." width="100%" />
 </picture>
 
 <div align="center">
@@ -22,7 +22,7 @@ Privacy-first **Tauri** desktop by **[KM-it-ops](https://github.com/KM-it-ops)**
 
 <br /><br />
 
-[**Download**](https://github.com/KM-it-ops/graduates-guide-desktop/releases) · [**Landing page**](https://km-it-ops.github.io/graduates-guide-desktop/landing/) · [**Develop**](#develop)
+[**Download**](https://github.com/KM-it-ops/graduates-guide-desktop/releases/latest) (macOS · Windows) · [**Landing page**](https://km-it-ops.github.io/graduates-guide-desktop/landing/) · [**Develop**](#develop)
 
 </div>
 
@@ -36,7 +36,7 @@ Privacy-first **Tauri** desktop by **[KM-it-ops](https://github.com/KM-it-ops)**
 | **Today · Queue · Follow-ups** | Shipped |
 | **Script reader + Copy** | Shipped |
 | **Apply assist** | Shipped |
-| **Evaluate / Generate in-app** | Stub — use engine CLI |
+| **Evaluate / Generate in-app** | Preview — [use engine CLI](docs/migrate-from-cli.md) |
 | **In-app Send / auto-apply** | Not offered (by design) |
 
 ## Why it exists
@@ -76,6 +76,7 @@ You need the words **before** the interview — not another agent chewing throug
 | API keys | OS keychain only |
 | Crash reports | Preference saved locally; no reporter shipped yet |
 | Hosted CV | Never — vault stays on your machine |
+| Job portals & mail | You open them; pasted text leaves the app when you submit |
 | CI / fixtures | Synthetic only — never real vault data |
 
 ## Develop

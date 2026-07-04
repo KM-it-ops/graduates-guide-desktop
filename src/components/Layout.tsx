@@ -27,7 +27,7 @@ export function Layout({ vaultPath }: Props) {
                 Follow-ups
               </NavLink>
               <NavLink to="/evaluate" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
-                Evaluate
+                Evaluate <span className="nav-stub-badge">preview</span>
               </NavLink>
               <NavLink to="/settings" className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}>
                 Settings

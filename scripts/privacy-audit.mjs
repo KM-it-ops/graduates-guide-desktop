@@ -154,6 +154,14 @@ if (/sentry|analytics|segment|mixpanel/i.test(pkg)) {
   fail('telemetry dependency in package.json');
 }
 
+const cargoPath = join(root, 'src-tauri', 'Cargo.toml');
+if (existsSync(cargoPath)) {
+  const cargo = readFileSync(cargoPath, 'utf-8');
+  if (/sentry|analytics|segment|mixpanel|posthog|amplitude/i.test(cargo)) {
+    fail('telemetry dependency in src-tauri/Cargo.toml');
+  }
+}
+
 const landingPath = join(root, 'landing', 'index.html');
 if (existsSync(landingPath)) {
   const landing = readFileSync(landingPath, 'utf-8');

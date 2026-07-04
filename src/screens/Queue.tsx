@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { QueueRow } from '@/components/QueueRow';
+import { packPrimaryPath } from '@/lib/packRoutes';
 import { engineQueue } from '@/lib/tauri';
 import type { QueueEntry } from '@/lib/types';
 
@@ -29,7 +30,7 @@ export function QueueScreen() {
   }, []);
 
   const openPack = (path: string) => {
-    navigate(`/script/${encodeURIComponent(path)}`);
+    navigate(packPrimaryPath(path));
   };
 
   if (loading) return <p>Loading queue…</p>;
@@ -39,7 +40,7 @@ export function QueueScreen() {
     <>
       <h1 className="page-title">Queue</h1>
       <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>
-        {entries.length} applications · click a row to open its script pack
+        {entries.length} applications · click a row for apply assist or script reader
       </p>
       <table className="queue-table">
         <thead>
