@@ -1,6 +1,6 @@
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="landing/assets/social-card.png" />
-  <img src="landing/assets/social-card.png" alt="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="landing/assets/social-card-og.png" />
+  <img src="landing/assets/social-card-og.png" alt="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" width="100%" />
 </picture>
 
 <div align="center">
@@ -74,7 +74,7 @@ You need the words **before** the interview — not another agent chewing throug
 | Accounts | None required |
 | Telemetry | None in Phase 1 |
 | API keys | OS keychain only |
-| Crash reports | Preference stub only (reporter planned Phase 4) |
+| Crash reports | Preference saved locally; no reporter shipped yet |
 | Hosted CV | Never — vault stays on your machine |
 | CI / fixtures | Synthetic only — never real vault data |
 

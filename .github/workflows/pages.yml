@@ -3,6 +3,11 @@ name: Deploy landing to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'landing/**'
+      - 'app-icon.svg'
+      - 'scripts/generate-social-card-og.mjs'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -33,8 +38,9 @@ jobs:
           mkdir -p _site/landing/assets
           cp app-icon.svg _site/
           cp landing/index.html _site/landing/
-          cp landing/assets/*.png _site/landing/assets/
-          cp landing/assets/*.svg _site/landing/assets/
+          cp landing/assets/readme-hero.png _site/landing/assets/
+          cp landing/assets/social-card-og.png _site/landing/assets/
+          cp landing/assets/hero-ui.svg _site/landing/assets/
           cat > _site/index.html <<'EOF'
           <!DOCTYPE html>
           <html lang="en">
