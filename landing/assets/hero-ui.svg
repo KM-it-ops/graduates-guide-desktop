@@ -8,7 +8,8 @@
   <text x="64" y="118" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Today</text>
   <text x="64" y="158" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Queue</text>
   <text x="64" y="186" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Follow-ups</text>
-  <text x="64" y="214" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Evaluate</text>
+  <text x="64" y="214" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#64748B">Evaluate</text>
+  <text x="132" y="214" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="9" fill="#64748B">preview</text>
   <text x="64" y="242" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#94A3B8">Settings</text>
   <rect x="248" y="56" width="664" height="40" rx="8" fill="#CCFBF1" fill-opacity="0.12" stroke="#0F766E" stroke-width="2"/>
   <text x="268" y="82" font-family="IBM Plex Sans, Segoe UI, sans-serif" font-size="13" fill="#5EEAD4">You copy in the app · you Send in your mail client or job portal</text>

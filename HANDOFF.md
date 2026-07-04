@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-04  
 **Repo:** [KM-it-ops/graduates-guide-desktop](https://github.com/KM-it-ops/graduates-guide-desktop)  
-**Branch:** `main` (iterations 8–11 merged)
+**Branch:** `main` (iterations 8–12)
 
 ---
 
@@ -39,40 +39,39 @@ Do not reintroduce: Google Fonts CDN, particles, cyber showboat, fake Send butto
 
 ---
 
-## Current state (iteration 11)
+## Current state (iteration 12)
 
 ### Landing page (`landing/index.html`)
 
 - **Style:** Calm dark technical — system fonts, no third-party CDN, CSP meta tag
+- **Tokens:** Landing CSS vars aligned with app (`--brand` cyan, `--accent` teal)
 - **Copy:** Honest Phase 1 scope table, Copy-not-Send, privacy list aligned with README
-- **Hero:** `readme-hero.png` generated from `hero-ui.svg` (truthful Today layout illustration)
-- **CTA:** `Download v0.1.0` → macOS/Windows only; Linux → build from source
-- **Assets:** `landing/assets/readme-hero.png`, `social-card-og.png` (1200×630, from `og-card.svg`)
-- **A11y:** skip link + focusable `<main>`, focus-visible, semantic pipeline `<ol>`, contrast fix on `--dim`
-- **SEO:** enriched JSON-LD, aligned OG/Twitter alt, root redirect carries social meta
+- **Hero:** `readme-hero.png` from `hero-ui.svg` (Evaluate labeled “preview” in illustration)
+- **CTA:** `Download v0.1.0` → macOS/Windows only; footer repeat CTA; Linux → build from source
+- **A11y:** skip link, focusable `<main>`, keyboard-scrollable scope table, scroll-padding-top, secondary CTA underline
+- **Perf:** hero `loading="lazy"` + `decoding="async"`; desktop preload retained
+- **SEO:** enriched JSON-LD; root redirect OG parity in Pages workflow
 
-### App UI bridge (iteration 9)
+### App UI bridge
 
+- `src/lib/packRoutes.ts`: apply packs route to `/apply/` from Queue + Today
+- `Layout.tsx`: Evaluate nav shows “preview” badge
 - `src/styles/tokens.css`: `--brand`, `--brand-soft` (#22d3ee)
-- `src/components/Layout.tsx`: KM-it-ops sidebar wordmark
-- `src/styles/global.css`: cyan active nav rail
 
 ### Tooling
 
 | Script | Purpose |
 |--------|---------|
-| `npm run privacy-audit` | No CDN on landing, CSP present, external link rel |
+| `npm run privacy-audit` | No CDN on landing, CSP present, external link rel, Cargo.toml telemetry scan |
 | `npm run privacy-audit:full` | Above + README asset paths exist |
 | `npm run generate:social-card` | `og-card.svg` → `social-card-og.png` |
 | `npm run generate:hero` | `hero-ui.svg` → `readme-hero.png` |
 
+Pages workflow runs `privacy-audit:full` before deploy.
+
 ### Skill (reuse this workflow)
 
 `.cursor/skills/parallel-iteration-audit/SKILL.md`
-
-Invoke: *"Run parallel audit on landing before iteration N"*
-
-Six lenses + optional 7th artifact subagent. Cap implementation at **8 items per iteration**.
 
 ---
 
@@ -80,65 +79,49 @@ Six lenses + optional 7th artifact subagent. Cap implementation at **8 items per
 
 | # | Commit theme | Keep | Drop |
 |---|--------------|------|------|
-| 1–4 | Brand, honest scope, polish, bold | Phase 1 truth, section structure | Generic timid layout |
-| 5 | Aurora + Fraunces | Warmth | Wrong genre (cream/editorial) |
-| 6–7 | Cyber Orbitron + particles | Dark palette, holo idea | Spectacle, mobile jank |
-| **8** | Calm truthful | Honest copy, a11y, no CDN | All animation layers |
-| **9** | Batch polish | OG PNG, app brand bridge, skill | — |
-| **10** | Pages + audit fixes | Linux CTA truth, preload hero | — |
-| **11** | Truthful hero + audit fixes | hero-ui PNG, scoped privacy copy, OG layout, audit guards | cyber readme-hero.png |
+| 8 | Calm truthful | Honest copy, a11y, no CDN | All animation layers |
+| 9 | Batch polish | OG PNG, app brand bridge, skill | — |
+| 10 | Pages + audit fixes | Linux CTA truth, preload hero | — |
+| 11 | Truthful hero + audit fixes | hero-ui PNG, scoped privacy copy | cyber readme-hero.png |
+| **12** | Apply assist + deploy gates | token alignment, CLI doc links, Pages audit gate | — |
 
 ---
 
 ## GitHub Pages
 
-**Workflow:** `.github/workflows/pages.yml` — runs on push to `main` when `landing/**`, `app-icon.svg`, or OG script changes.
+**Workflow:** `.github/workflows/pages.yml` — runs `privacy-audit:full` then builds on push to `main`.
 
 **URLs (when deploy succeeds):**
 
 - Landing: https://km-it-ops.github.io/graduates-guide-desktop/landing/
 - Root redirect: https://km-it-ops.github.io/graduates-guide-desktop/
 
-**Status (2026-07-04):** User enabled Pages, but deploy still returns **404** from `actions/deploy-pages`. Build job succeeds; deploy job fails.
+**Status (2026-07-04):** Deploy may still 404 until Settings → Pages → Source = **GitHub Actions**. Re-run failed deploy job after enabling.
 
-**Troubleshooting (do on phone/desktop):**
-
-1. [Settings → Pages](https://github.com/KM-it-ops/graduates-guide-desktop/settings/pages)
-2. **Source must be:** `GitHub Actions` (not "Deploy from a branch")
-3. If it already says GitHub Actions, toggle to branch and back, or wait ~5 min for propagation
-4. Re-run: [Actions → Deploy landing → Re-run failed jobs](https://github.com/KM-it-ops/graduates-guide-desktop/actions/workflows/pages.yml)
-5. Check repo **Settings → Actions → General → Workflow permissions** = "Read and write"
-
-**Until Pages is live:** use HTML Preview  
+**Until Pages is live:** HTML Preview  
 https://htmlpreview.github.io/?https://raw.githubusercontent.com/KM-it-ops/graduates-guide-desktop/main/landing/index.html
-
-**Verify live:** hero PNG, favicon, no console 404s at `/landing/`.
 
 ---
 
-## Deferred backlog (from parallel audits — iteration 11+)
-
-Prioritized for next agent:
+## Deferred backlog (iteration 13+)
 
 ### Critical / high
 
-- [ ] Confirm Pages deploy green after re-run; smoke-test hero image + favicon on live URL
-- [ ] Version `0.1.0` hard-coded in landing JSON-LD + CTA — consider sync from `package.json` at build time
-- [ ] `script-src 'unsafe-inline'` in landing CSP (only needed for JSON-LD) — tighten with hash or external schema file
+- [ ] Confirm Pages deploy green; smoke-test hero PNG + favicon on live URL
+- [ ] Version `0.1.0` hard-coded in landing JSON-LD + CTA — sync from `package.json` at build time
+- [ ] `script-src 'unsafe-inline'` in landing CSP — tighten with hash or external schema file
 
 ### Medium
 
-- [ ] Landing `--accent` vs app `--accent` naming collision (landing cyan = app `--brand`) — rename landing CSS vars to match tokens
 - [ ] IBM Plex fonts on landing (app uses @fontsource; landing uses system-ui) — self-host woff2 or accept drift
 - [ ] WebP variant for `readme-hero.png` (LCP payload)
-- [ ] `privacy-audit.mjs`: scan Cargo.toml for telemetry deps
-- [ ] Fix `.github/workflows/release.yml` failing on every push (tag-only intent? add `paths` filter)
-- [ ] Apply assist discoverability in app nav (feature shipped but hard to reach)
+- [ ] Fix `.github/workflows/release.yml` if still noisy on push
+- [ ] Generate nav entry for onboarding wizard in marketing copy
 
 ### Low
 
-- [ ] README social card could use `social-card-og.png` for OG-shaped preview
-- [ ] EthicalBanner / landing manifest wording already aligned — keep in sync on edits
+- [ ] Formal privacy policy page (marketing claims are strong but link nowhere)
+- [ ] README shields.io third-party disclosure in privacy section
 
 ---
 
@@ -149,47 +132,18 @@ PRODUCT.md              Brand personality + anti-references
 README.md               GitHub face; links to Pages URL
 landing/index.html      Static marketing page (self-contained)
 landing/assets/         hero PNG, og-card.svg, social-card-og.png
-app-icon.svg            Favicon (landing uses ../app-icon.svg)
 scripts/privacy-audit.mjs
-scripts/generate-social-card-og.mjs
 .github/workflows/pages.yml
-.cursor/skills/parallel-iteration-audit/SKILL.md
-src/styles/tokens.css   App design tokens
+src/lib/packRoutes.ts   Apply vs script routing
 src/components/Layout.tsx
 ```
-
----
-
-## Commands
-
-```bash
-# Dev app
-npm install && npm run tauri:dev
-
-# Audits
-npm run privacy-audit
-npm run privacy-audit:full
-npm run generate:social-card
-
-# Local landing preview (phone on same WiFi)
-python3 -m http.server 8080
-# → http://<lan-ip>:8080/landing/
-```
-
----
-
-## Git notes
-
-- PR #1 merged (iterations 8–9)
-- Iteration 10 merged directly to `main`
-- Stale local branches may exist: `cursor/landing-iteration-8-*`, `cursor/landing-iteration-10-*` — safe to delete
 
 ---
 
 ## Success criteria for next session
 
 1. Pages live at `/landing/` with working hero PNG and favicon
-2. Parallel audit run → iteration 12 committed to `main`
+2. Parallel audit run → iteration 13 committed to `main`
 3. No brand regressions (calm, honest, no CDN, no Linux binary overclaim)
 4. README + landing + PRODUCT stay aligned
 
@@ -198,5 +152,4 @@ python3 -m http.server 8080
 ## Contact / ownership
 
 **Publisher:** KM-it-ops  
-**License:** MIT  
-**Engine submodule:** career-ops fork (see README acknowledgments)
+**License:** MIT

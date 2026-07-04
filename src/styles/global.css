@@ -105,6 +105,16 @@ button {
   text-decoration: none;
 }
 
+.nav-stub-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-left: 0.25rem;
+  vertical-align: middle;
+}
+
 .page-title {
   font-size: 1.5rem;
   font-weight: 700;

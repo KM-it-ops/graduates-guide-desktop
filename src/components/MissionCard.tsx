@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { isApplyPack, packApplyPath, packScriptPath } from '@/lib/packRoutes';
 import type { Mission } from '@/lib/types';
 
 interface Props {
@@ -32,9 +33,19 @@ export function MissionCard({ mission, index, checked, onToggle }: Props) {
         <dd>{mission.done}</dd>
       </dl>
       {scriptPath && (
-        <Link to={`/script/${encodeURIComponent(scriptPath)}`} className="btn btn-primary btn-sm">
-          Open script
-        </Link>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {isApplyPack(scriptPath) && (
+            <Link to={packApplyPath(scriptPath)} className="btn btn-primary btn-sm">
+              Apply assist
+            </Link>
+          )}
+          <Link
+            to={packScriptPath(scriptPath)}
+            className={`btn btn-sm${isApplyPack(scriptPath) ? '' : ' btn-primary'}`}
+          >
+            Open script
+          </Link>
+        </div>
       )}
     </article>
   );
