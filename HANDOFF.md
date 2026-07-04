@@ -2,7 +2,7 @@
 
 **Date:** 2026-07-04  
 **Repo:** [KM-it-ops/graduates-guide-desktop](https://github.com/KM-it-ops/graduates-guide-desktop)  
-**Branch:** `main` (iterations 8–10 merged)
+**Branch:** `main` (iterations 8–11 merged)
 
 ---
 
@@ -39,15 +39,17 @@ Do not reintroduce: Google Fonts CDN, particles, cyber showboat, fake Send butto
 
 ---
 
-## Current state (iteration 10)
+## Current state (iteration 11)
 
 ### Landing page (`landing/index.html`)
 
 - **Style:** Calm dark technical — system fonts, no third-party CDN, CSP meta tag
 - **Copy:** Honest Phase 1 scope table, Copy-not-Send, privacy list aligned with README
+- **Hero:** `readme-hero.png` generated from `hero-ui.svg` (truthful Today layout illustration)
 - **CTA:** `Download v0.1.0` → macOS/Windows only; Linux → build from source
-- **Assets:** `landing/assets/readme-hero.png`, `social-card-og.png` (1200×630, generated from `og-card.svg`)
-- **A11y:** skip link, `<main>`, focus-visible, semantic pipeline `<ol>`
+- **Assets:** `landing/assets/readme-hero.png`, `social-card-og.png` (1200×630, from `og-card.svg`)
+- **A11y:** skip link + focusable `<main>`, focus-visible, semantic pipeline `<ol>`, contrast fix on `--dim`
+- **SEO:** enriched JSON-LD, aligned OG/Twitter alt, root redirect carries social meta
 
 ### App UI bridge (iteration 9)
 
@@ -62,6 +64,7 @@ Do not reintroduce: Google Fonts CDN, particles, cyber showboat, fake Send butto
 | `npm run privacy-audit` | No CDN on landing, CSP present, external link rel |
 | `npm run privacy-audit:full` | Above + README asset paths exist |
 | `npm run generate:social-card` | `og-card.svg` → `social-card-og.png` |
+| `npm run generate:hero` | `hero-ui.svg` → `readme-hero.png` |
 
 ### Skill (reuse this workflow)
 
@@ -83,7 +86,7 @@ Six lenses + optional 7th artifact subagent. Cap implementation at **8 items per
 | **8** | Calm truthful | Honest copy, a11y, no CDN | All animation layers |
 | **9** | Batch polish | OG PNG, app brand bridge, skill | — |
 | **10** | Pages + audit fixes | Linux CTA truth, preload hero | — |
-| **11** | Handoff + live fixes | JSON-LD OS fix, README OG PNG, Pages paths filter | — |
+| **11** | Truthful hero + audit fixes | hero-ui PNG, scoped privacy copy, OG layout, audit guards | cyber readme-hero.png |
 
 ---
 
@@ -128,8 +131,9 @@ Prioritized for next agent:
 - [ ] Landing `--accent` vs app `--accent` naming collision (landing cyan = app `--brand`) — rename landing CSS vars to match tokens
 - [ ] IBM Plex fonts on landing (app uses @fontsource; landing uses system-ui) — self-host woff2 or accept drift
 - [ ] WebP variant for `readme-hero.png` (LCP payload)
-- [ ] `privacy-audit.mjs`: validate CSP directives (no unsafe-inline), scan Cargo.toml for telemetry deps
+- [ ] `privacy-audit.mjs`: scan Cargo.toml for telemetry deps
 - [ ] Fix `.github/workflows/release.yml` failing on every push (tag-only intent? add `paths` filter)
+- [ ] Apply assist discoverability in app nav (feature shipped but hard to reach)
 
 ### Low
 
@@ -185,7 +189,7 @@ python3 -m http.server 8080
 ## Success criteria for next session
 
 1. Pages live at `/landing/` with working hero PNG and favicon
-2. Parallel audit run → iteration 11 committed to `main`
+2. Parallel audit run → iteration 12 committed to `main`
 3. No brand regressions (calm, honest, no CDN, no Linux binary overclaim)
 4. README + landing + PRODUCT stay aligned
 

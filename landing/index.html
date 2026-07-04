@@ -22,17 +22,21 @@
   <meta name="twitter:title" content="The Graduate's Guide" />
   <meta name="twitter:description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
   <meta name="twitter:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card-og.png" />
-  <meta name="twitter:image:alt" content="The Graduate's Guide — privacy-first desktop job hunt cockpit by KM-it-ops" />
+  <meta name="twitter:image:alt" content="The Graduate's Guide — Copy in the app. Send on the portal or in your mail client." />
+  <meta property="og:site_name" content="KM-it-ops" />
   <link rel="icon" href="../app-icon.svg" type="image/svg+xml" />
-  <link rel="preload" as="image" href="assets/readme-hero.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/readme-hero.png" fetchpriority="high" media="(min-width: 960px)" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "The Graduate's Guide",
+    "description": "Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client.",
     "softwareVersion": "0.1.0",
     "operatingSystem": "Windows, macOS",
     "applicationCategory": "ProductivityApplication",
+    "image": "https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card-og.png",
+    "screenshot": "https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/readme-hero.png",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "url": "https://km-it-ops.github.io/graduates-guide-desktop/landing/",
     "downloadUrl": "https://github.com/KM-it-ops/graduates-guide-desktop/releases",
@@ -46,7 +50,7 @@
       --panel: #1e293b;
       --ink: #f8fafc;
       --muted: #94a3b8;
-      --dim: #788aa2;
+      --dim: #94a3b8;
       --accent: #22d3ee;
       --accent-soft: #67e8f9;
       --primary: #1d4ed8;
@@ -93,7 +97,7 @@
       font-weight: 700;
     }
 
-    .skip-link:focus {
+    .skip-link:focus-visible {
       left: 0.75rem;
       top: calc(0.75rem + var(--safe-top));
     }
@@ -656,7 +660,9 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .cta { transition: none; }
+      .cta { transition: none; transform: none; box-shadow: none; }
+      .cta:hover { transform: none; box-shadow: none; }
+      .cta:active { transform: none; }
       .feature-card { transition: none; }
     }
 
@@ -700,7 +706,7 @@
       </nav>
     </header>
 
-    <main id="main-content">
+    <main id="main-content" tabindex="-1">
       <div class="hero-wrap">
         <section class="hero" aria-labelledby="hero-heading">
           <div class="hero-copy">
@@ -714,7 +720,7 @@
               Copy in the app — Send on the portal or in your mail client. No cloud lock-in. No bot.
             </p>
             <p class="why">
-              Your data never routes through our servers. The app reads your vault on disk and puts words on your clipboard — you choose where they go.
+              Your vault stays on disk — the app does not upload it to KM-it-ops. It reads local files and puts words on your clipboard; you choose where they go (portal, mail client, or elsewhere).
             </p>
             <div class="cta-row">
               <a class="cta" href="https://github.com/KM-it-ops/graduates-guide-desktop/releases/latest" target="_blank" rel="noopener noreferrer" aria-label="Download v0.1.0 for macOS and Windows from GitHub (opens in new tab)">
@@ -733,9 +739,9 @@
           </div>
           <figure class="hero-shot">
             <div class="shot-frame">
-              <img src="assets/readme-hero.png" alt="Today screen with sanitized fixture data — five missions and one priority task" width="720" height="480" loading="eager" fetchpriority="high" decoding="async" />
+              <img src="assets/readme-hero.png" alt="Today screen layout illustration with sanitized fixture data — sidebar, ethical banner, missions, and Copy-not-Send messaging" width="960" height="600" loading="eager" fetchpriority="high" decoding="sync" />
             </div>
-            <figcaption class="hero-caption">App screenshot — sanitized fixture data</figcaption>
+            <figcaption class="hero-caption">Layout illustration — sanitized fixture data, not a live capture</figcaption>
           </figure>
         </section>
       </div>
@@ -745,7 +751,7 @@
           <p><strong>Copy in the app.</strong> You Send in your mail client or job portal.</p>
           <div class="pills">
             <span class="pill">No auto-apply</span>
-            <span class="pill">Telemetry off</span>
+            <span class="pill">No telemetry (Phase 1)</span>
             <span class="pill dim">MIT</span>
           </div>
         </div>
@@ -775,7 +781,7 @@
           </article>
           <article class="feature-card">
             <h3>Apply assist</h3>
-            <p>Portal and script side by side — copy, paste, submit yourself.</p>
+            <p>Script reader in-app plus portal opener — copy, paste, submit yourself in the browser.</p>
           </article>
           <article class="feature-card">
             <h3>Vault import</h3>
@@ -818,7 +824,7 @@
           <h2 id="scope-heading">Phase 1 scope</h2>
           <p>Shipped vs roadmap — honest about what is and is not built.</p>
         </div>
-        <div class="scope-panel" tabindex="0" role="region" aria-label="Phase 1 scope table (scroll horizontally on small screens)">
+        <div class="scope-panel" role="region" aria-label="Phase 1 scope table (scroll horizontally on small screens)">
           <table class="scope-table">
             <caption class="visually-hidden">Phase 1 feature scope and shipping status</caption>
             <thead>
