@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'; form-action 'none'; frame-ancestors 'none';" />
   <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="dark" />
   <title>The Graduate's Guide — KM-it-ops</title>
   <meta name="description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
   <link rel="canonical" href="https://km-it-ops.github.io/graduates-guide-desktop/landing/" />
@@ -30,7 +31,7 @@
     "@type": "SoftwareApplication",
     "name": "The Graduate's Guide",
     "softwareVersion": "0.1.0",
-    "operatingSystem": "Windows, macOS, Linux",
+    "operatingSystem": "Windows, macOS",
     "applicationCategory": "ProductivityApplication",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
     "url": "https://km-it-ops.github.io/graduates-guide-desktop/landing/",
@@ -45,7 +46,7 @@
       --panel: #1e293b;
       --ink: #f8fafc;
       --muted: #94a3b8;
-      --dim: #64748b;
+      --dim: #788aa2;
       --accent: #22d3ee;
       --accent-soft: #67e8f9;
       --primary: #1d4ed8;
@@ -584,6 +585,7 @@
 
     .scope-table tbody tr { background: rgba(30, 41, 59, 0.45); }
     .scope-table tr:last-child td { border-bottom: none; }
+    .scope-table a { color: var(--accent-soft); text-decoration: underline; text-underline-offset: 2px; }
 
     .badge-shipped { color: #34d399; font-weight: 700; }
     .badge-stub { color: #fbbf24; font-weight: 700; }
@@ -720,7 +722,7 @@
                 <span class="cta-platforms">macOS · Windows</span>
               </a>
               <a class="cta-secondary" href="https://github.com/KM-it-ops/graduates-guide-desktop#develop" target="_blank" rel="noopener noreferrer" aria-label="Build from source on GitHub (opens in new tab)">Build for Linux / from source</a>
-              <div class="download-links" aria-label="Download by platform">
+              <div class="download-links" role="group" aria-label="Download by platform">
                 <a href="https://github.com/KM-it-ops/graduates-guide-desktop/releases" target="_blank" rel="noopener noreferrer">All releases</a>
                 <span aria-hidden="true"> · </span>
                 <a href="https://github.com/KM-it-ops/graduates-guide-desktop/releases/latest" target="_blank" rel="noopener noreferrer">Latest macOS &amp; Windows</a>
@@ -731,7 +733,7 @@
           </div>
           <figure class="hero-shot">
             <div class="shot-frame">
-              <img src="assets/readme-hero.png" alt="Today screen with sanitized fixture data — five missions and one priority task" width="720" height="480" loading="eager" fetchpriority="high" decoding="sync" />
+              <img src="assets/readme-hero.png" alt="Today screen with sanitized fixture data — five missions and one priority task" width="720" height="480" loading="eager" fetchpriority="high" decoding="async" />
             </div>
             <figcaption class="hero-caption">App screenshot — sanitized fixture data</figcaption>
           </figure>
@@ -752,7 +754,7 @@
       <section class="section" aria-labelledby="features-heading">
         <div class="section-head">
           <h2 id="features-heading">Phase 1 features</h2>
-          <p>Shipped in Phase 1. Everything else stays in your vault on disk.</p>
+          <p>Shipped in Phase 1. Stub and out-of-scope rows are listed in the scope table below.</p>
         </div>
         <div class="feature-grid">
           <article class="feature-card">
@@ -828,7 +830,7 @@
               <tr><td>Queue &amp; follow-ups</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
               <tr><td>Script reader + Copy</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
               <tr><td>Apply assist</td><td class="badge-shipped"><span class="visually-hidden">Status: </span>Shipped</td></tr>
-              <tr><td>Evaluate / Generate in-app</td><td class="badge-stub"><span class="visually-hidden">Status: </span>Stub — use engine CLI</td></tr>
+              <tr><td>Evaluate / Generate in-app</td><td class="badge-stub"><span class="visually-hidden">Status: </span>Stub — <a href="https://github.com/KM-it-ops/graduates-guide-desktop#develop" target="_blank" rel="noopener noreferrer">use engine CLI</a></td></tr>
               <tr><td>In-app Send / auto-apply</td><td class="badge-never"><span class="visually-hidden">Status: </span>Not offered (by design)</td></tr>
             </tbody>
           </table>
@@ -846,7 +848,7 @@
             <li>No account required</li>
             <li>Telemetry — none in Phase 1</li>
             <li>API keys — OS keychain only</li>
-            <li>Crash reports — preference stub only (reporter planned Phase 4)</li>
+            <li>Crash reports — preference saved locally; no reporter shipped yet</li>
             <li>Hosted CV — never; vault stays on your machine</li>
             <li>CI / fixtures — synthetic only, never real vault data</li>
           </ul>
