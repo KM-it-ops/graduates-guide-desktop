@@ -96,9 +96,20 @@ Six lenses + optional 7th artifact subagent. Cap implementation at **8 items per
 - Landing: https://km-it-ops.github.io/graduates-guide-desktop/landing/
 - Root redirect: https://km-it-ops.github.io/graduates-guide-desktop/
 
-**Status (2026-07-04):** User enabled Pages (Source → GitHub Actions). First deploy failed before enablement. **Iteration 11 push should trigger a fresh deploy.** If still 404, re-run: [Actions → Deploy landing to GitHub Pages](https://github.com/KM-it-ops/graduates-guide-desktop/actions/workflows/pages.yml).
+**Status (2026-07-04):** User enabled Pages, but deploy still returns **404** from `actions/deploy-pages`. Build job succeeds; deploy job fails.
 
-**Verify live:** hero PNG loads, favicon loads, no console 404s.
+**Troubleshooting (do on phone/desktop):**
+
+1. [Settings → Pages](https://github.com/KM-it-ops/graduates-guide-desktop/settings/pages)
+2. **Source must be:** `GitHub Actions` (not "Deploy from a branch")
+3. If it already says GitHub Actions, toggle to branch and back, or wait ~5 min for propagation
+4. Re-run: [Actions → Deploy landing → Re-run failed jobs](https://github.com/KM-it-ops/graduates-guide-desktop/actions/workflows/pages.yml)
+5. Check repo **Settings → Actions → General → Workflow permissions** = "Read and write"
+
+**Until Pages is live:** use HTML Preview  
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/KM-it-ops/graduates-guide-desktop/main/landing/index.html
+
+**Verify live:** hero PNG, favicon, no console 404s at `/landing/`.
 
 ---
 
