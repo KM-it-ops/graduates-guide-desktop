@@ -16,7 +16,7 @@ Privacy-first **Tauri** desktop by **[KM-it-ops](https://github.com/KM-it-ops)**
 [![Tauri](https://img.shields.io/badge/stack-Tauri-24C8DB)](https://tauri.app/)
 [![No auto-apply](https://img.shields.io/badge/auto--apply-none-0f766e)](https://km-it-ops.github.io/graduates-guide-desktop/landing/)
 
-<img src="landing/assets/readme-hero.png" alt="Today screen layout illustration (sanitized fixture data)" width="720" />
+<img src="landing/assets/readme-hero.png" alt="Today screen layout illustration with sanitized fixture data — sidebar, ethical banner, missions, and Copy-not-Send messaging" width="960" />
 
 <sub><strong>Illustration only</strong> — sanitized fixture data · <strong>Copy</strong> in-app · you Send on the portal or in your mail client</sub>
 
@@ -52,7 +52,7 @@ You need the words **before** the interview — not another agent chewing throug
 - Queue — ranked from your vault
 - Follow-ups — nudge tracking from your vault
 - Scripts — Copy button, not in-app Send
-- Apply assist — portal + script side by side
+- Apply assist — script reader in-app plus portal opener in your browser
 
 </td>
 <td width="50%">

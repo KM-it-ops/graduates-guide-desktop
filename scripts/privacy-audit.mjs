@@ -168,6 +168,34 @@ if (existsSync(landingPath)) {
 
   auditExternalLinkRel(landing, 'landing/index.html');
   auditImgSrcSelfContained(landing, 'landing/index.html');
+
+  const jsonLdMatch = landing.match(
+    /<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/i,
+  );
+  if (jsonLdMatch) {
+    try {
+      const schema = JSON.parse(jsonLdMatch[1]);
+      const os = schema.operatingSystem ?? '';
+      if (/linux/i.test(os)) {
+        fail(
+          'landing JSON-LD operatingSystem must not claim Linux binaries (build-from-source only)',
+        );
+      }
+    } catch {
+      fail('landing JSON-LD block is not valid JSON');
+    }
+  } else {
+    fail('landing page missing JSON-LD SoftwareApplication block');
+  }
+
+  const cspMatch = landing.match(
+    /Content-Security-Policy[^>]+content="([^"]+)"/i,
+  );
+  if (cspMatch && /script-src[^;]*'unsafe-inline'/.test(cspMatch[1])) {
+    console.warn(
+      'WARN: landing CSP uses script-src unsafe-inline (needed for JSON-LD until hashed)',
+    );
+  }
 }
 
 if (auditReadme) {

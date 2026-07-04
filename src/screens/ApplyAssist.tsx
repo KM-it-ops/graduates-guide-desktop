@@ -24,7 +24,7 @@ export function ApplyAssistScreen() {
       <div>
         <h1 className="page-title">Apply assist</h1>
         <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-          Script on the left · portal on the right · <strong>you click Submit</strong>
+          Script in-app · portal in your browser · <strong>you click Submit</strong>
         </p>
         {jobUrl && (
           <button type="button" className="btn btn-primary" onClick={openBrowser}>

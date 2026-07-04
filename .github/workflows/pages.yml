@@ -7,6 +7,7 @@ on:
       - 'landing/**'
       - 'app-icon.svg'
       - 'scripts/generate-social-card-og.mjs'
+      - 'scripts/generate-hero-png.mjs'
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
@@ -32,6 +33,7 @@ jobs:
 
       - run: npm ci
       - run: npm run generate:social-card
+      - run: npm run generate:hero
 
       - name: Assemble Pages artifact
         run: |
@@ -46,9 +48,21 @@ jobs:
           <html lang="en">
           <head>
             <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <meta http-equiv="refresh" content="0; url=landing/" />
-            <title>The Graduate's Guide</title>
+            <title>The Graduate's Guide — KM-it-ops</title>
+            <meta name="description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
             <link rel="canonical" href="https://km-it-ops.github.io/graduates-guide-desktop/landing/" />
+            <meta property="og:title" content="The Graduate's Guide" />
+            <meta property="og:description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/" />
+            <meta property="og:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card-og.png" />
+            <meta property="og:site_name" content="KM-it-ops" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="The Graduate's Guide" />
+            <meta name="twitter:description" content="Your job search lives in a folder you own. Privacy-first desktop cockpit — Copy in app, Send on the portal or in your mail client." />
+            <meta name="twitter:image" content="https://km-it-ops.github.io/graduates-guide-desktop/landing/assets/social-card-og.png" />
           </head>
           <body>
             <p><a href="landing/">The Graduate's Guide — landing page</a></p>
