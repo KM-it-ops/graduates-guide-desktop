@@ -2,7 +2,7 @@
 name = "graduates-guide-desktop"
 version = "0.1.0"
 description = "The Graduate's Guide — privacy-first job hunt cockpit"
-authors = ["Mahmoud Al-Kurdi"]
+authors = ["Mahmoud Al Kurdi"]
 edition = "2021"
 
 [lib]
